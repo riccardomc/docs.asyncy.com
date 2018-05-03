@@ -1,0 +1,22 @@
+{
+  "name": "docs.asyncy.com",
+  "version": "1.0.0",
+  "description": "Docs for Asyncy",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asyncy/docs.asyncy.com.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/asyncy/docs.asyncy.com/issues"
+  },
+  "homepage": "https://github.com/asyncy/docs.asyncy.com#readme",
+  "devDependencies": {
+    "vuepress": "^0.8.4"
+  }
+}
