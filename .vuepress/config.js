@@ -9,6 +9,7 @@ module.exports = {
       '/containers',
       '/graphql',
       '/errors',
+      '/faq',
     ]
   }
 }
