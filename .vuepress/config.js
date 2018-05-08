@@ -7,12 +7,12 @@ module.exports = {
     editLinks: true,
     sidebar: [
       '/',
-      '/storyscript',
-      '/plugins',
-      '/containers',
-      '/graphql',
-      '/errors',
-      '/faq',
+      '/storyscript/',
+      '/plugins/',
+      '/containers/',
+      '/graphql/',
+      '/errors/',
+      '/faq/',
     ]
   }
 }
