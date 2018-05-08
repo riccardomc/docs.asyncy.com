@@ -13,7 +13,7 @@ Storyscript (or Stories for short) focuses on the **application logic** rather t
 
 Let's build a quick application for example. Our goals are to upload, analyze, compress and archive a video. A non-trivial application but in a **couple lines of Storyscript** we made it.
 
-```coffee
+```coffeescript
 # Registers with Asyncy Server as an endpoint
 http-endpoint method:'post' path:'/upload' as request, response
     # generate a unique id for this upload
@@ -47,7 +47,7 @@ Time to jump into syntax.
 
 ## Syntax Overview
 
-```coffee
+```coffeescript
 ###
 Welcome!
   This is a comment block
@@ -124,7 +124,7 @@ myService cmd foo:(myString split by:',')
 
 ## Strings
 
-```coffee
+```coffeescript
 data = "foobar"
 
 long_string = "Hi Friend,
@@ -157,7 +157,7 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 
 ### Mutations
 
-```sh
+```shell
 "abc" length
 # >>> 3
 
@@ -179,7 +179,7 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 
 ## Numbers
 
-```coffee
+```coffeescript
 int = 1
 number = 1.2
 ```
@@ -187,7 +187,7 @@ number = 1.2
 
 ## Comments
 
-```coffee
+```coffeescript
 ###
 Large
   Comment
@@ -206,14 +206,14 @@ Comments are ignored by the compiler, though the compiler makes its best effort 
 
 ## Boolean
 
-```coffee
+```coffeescript
 foo = true
 bar = no
 ```
 
 ## Lists
 
-```coffee
+```coffeescript
 list_inline = [string, 1, 2]
 list_multiline = [
   string,
@@ -224,7 +224,7 @@ list_multiline = [
 
 ### Mutations
 
-```py
+```python
 ['a', 'b', 'c'] length
 # >>> 3
 
@@ -250,7 +250,7 @@ list_multiline = [
 
 ## Objects
 
-```coffee
+```coffeescript
 object_inline = {'foo': 'bar', 'apples': 'oranges'}
 object_multiline = {
   'foo': 'bar',
@@ -260,7 +260,7 @@ object_multiline = {
 
 ### Mutations
 
-```py
+```python
 {'a': 1, 'b': 2} length
 # >>> 2
 
@@ -281,7 +281,7 @@ object_multiline = {
 
 ## Conditions
 
-```coffee
+```coffeescript
 if foo = bar
   # ...
 else if foo > bar
@@ -297,7 +297,7 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 
 ## Looping
 
-```coffee
+```coffeescript
 for child in siblings
   # ...
 
@@ -312,7 +312,7 @@ In Storyscript, loops provide a way to iterate over data.
 
 ## Services
 
-```coffee
+```coffeescript
 # Service with command and arguments
 service cmd key:value anotherKey:value
 
