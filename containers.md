@@ -2,13 +2,13 @@
 
 > Simple container that works in Asyncy
 
-```Dockerfile
+```Docker
 FROM         alpine
 RUN          apk add curl
 ENTRYPOINT   ["curl"]
 ```
 
-```
+```coffeescript
 res = my-container 'http://asyncy.com'
 # >>> <head>...
 ```
@@ -27,12 +27,12 @@ An `asyncy.yml` file should be provided which outlines the command structure and
 
 ## Input
 
-```sh
+```shell
 # shell
 docker run --rm owner/repo args --kwargs
 ```
 
-```
+```coffeescript
 # Storyscript
 owner/repo args --kwargs
 
@@ -49,7 +49,7 @@ Lists and objects are JSON encoded when passed as arguments or keyword arguments
 
 > Simple container
 
-```
+```coffeescript
 data = alpine echo 'Hello world'
 log data
 # >>> 'Hello world'
@@ -57,7 +57,7 @@ log data
 
 > Streaming container example
 
-```
+```coffeescript
 twitter stream '#FOSS' as tweet
     log tweet.message
 # >>> "Everything should be #FOSS"
@@ -79,7 +79,7 @@ Aliases are currently granted by Asyncy Staff while in beta.
 
 ## Commands
 
-```
+```yaml
 # asyncy.yml
 commands:
   compress:
@@ -104,7 +104,7 @@ In addition to the basics above, there are advanced configurations.
 
 > Patterns
 
-```
+```yaml
 # asyncy.yml
 commands:
   go:
@@ -116,7 +116,7 @@ commands:
 
 > Enums
 
-```
+```yaml
 commands:
   go:
     args:
@@ -131,7 +131,7 @@ commands:
 
 > Argument Positions
 
-```
+```yaml
 commands:
   go:
     format: '{bar} {foo} * **' # default
@@ -146,7 +146,7 @@ By default the container expects variables to be in the order they are defined.
 
 ### Additional args and kwargs
 
-```
+```yaml
 # asyncy.yml
 commands:
   go:
@@ -160,7 +160,7 @@ Optionally disable additional args and kwargs.
 ### Entrypoint
 
 
-```
+```yaml
 # asyncy.yml
 commands:
   entrypoint:  # reserved keyword
@@ -174,7 +174,7 @@ Container may not a need a command and operate with an entrypoint.
 
 Define required environment variables.
 
-```
+```yaml
 # asyncy.yml
 env:
   access_token:
@@ -262,7 +262,7 @@ asyncy: app=$ASYNCY_APP_ID story=$ASYNCY_STORY_ID log_hash=$ASYNCY_LOG_HASH line
 
 > Syslog Example
 
-```py
+```python
 #!/usr/bin/env python
 
 import logging
@@ -348,7 +348,7 @@ Containers have no volume access by default. However, if a file type is provided
 ### Cache Volume
 A temporary volume is unique to each Storyline and destroyed when the Storyline finishes. If a Storyline is paused the volume will persist until.
 
-```
+```yaml
 # asyncy.yml
 volumes:
   cache:
@@ -375,13 +375,13 @@ Persistent volumes may be created and shared between containers. Used for storin
 Define how Asyncy calls your container.
 
 ### cli
-```
+```yaml
 # asyncy.yml
 interface: cli
 ```
 
 ### http(s)
-```
+```yaml
 # asyncy.yml
 interface:
   http:
@@ -394,7 +394,7 @@ interface:
 
 Define scaling schedules.
 
-```
+```yaml
 # asyncy.yml
 scale:
   # [TODO]
@@ -404,7 +404,7 @@ scale:
 
 List the ports that need binding upon container startup.
 
-```
+```yaml
 # asyncy.yml
 ports:
   - 8080
@@ -414,7 +414,7 @@ ports:
 
 Define containers system requirements.
 
-```
+```yaml
 # asyncy.yml
 system:
   cpu: 1         # default
@@ -431,7 +431,7 @@ Inherit from the Dockerfile's `HEALTHCHECK`. https://docs.docker.com/engine/refe
 Asyncy will startup containers before they are called in the Storyscript and shutdown the container once no longer needed.
 A user-defined command may be provided to prepare the containers execution environment or clean-up workspace.
 
-```
+```yaml
 # asyncy.yml
 lifecycle:
   startup: ./startup.sh
@@ -446,7 +446,7 @@ All capacities are stripped from the containers.
 It's required to list linux capacities in the configuration.
 Learn more about [Docker runtime privilege and linux capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
 
-```
+```yaml
 # asyncy.yml
 cap:
   - chown

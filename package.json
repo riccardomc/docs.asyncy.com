@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/asyncy/docs.asyncy.com#readme",
   "devDependencies": {
+    "markdown-it-highlightjs": "^3.0.0",
     "vuepress": "github:vuejs/vuepress"
   }
 }

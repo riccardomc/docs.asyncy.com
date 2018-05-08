@@ -2,7 +2,7 @@
 
 > Simple, yet powerful example.
 
-```
+```coffeescript
 http server as request
     id = uuid uuid4
 
@@ -33,7 +33,7 @@ All the operations developers expect are built-in and likely quite familiar.
 
 ## Strings
 
-```
+```coffeescript
 data = "foobar"
 
 long_string = "Hi Friend,
@@ -68,7 +68,7 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 
 ## Numbers
 
-```
+```coffeescript
 int = 1
 number = 1.2
 ```
@@ -78,7 +78,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 ## Comments
 
-```
+```coffeescript
 ###
 Large
   Comment
@@ -97,7 +97,7 @@ Comments are ignored by the compiler, though the compiler makes its best effort 
 
 ## Boolean
 
-```
+```coffeescript
 # These are true
 foo = true
 foo = yes
@@ -111,7 +111,7 @@ As in YAML, `on` and `yes` are the same as boolean `true`, while `off` and `no` 
 
 ## Lists
 
-```
+```coffeescript
 list_inline = [string, 1, 2]
 list = [
   string
@@ -130,7 +130,7 @@ The Storyscript literals for objects and arrays look very similar to Python. Whe
 
 ## Conditions
 
-```
+```coffeescript
 if foo = bar
     ...
 else
@@ -145,7 +145,7 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 
 ## Crontab and waits
 
-```
+```coffeescript
 wait '5 minutes'
   ...
 
@@ -164,7 +164,7 @@ Storyscript comes with built-in crontab and waits.
 
 ## Looping
 
-```
+```coffeescript
 for child in siblings
   ...
 
@@ -179,7 +179,7 @@ In Storyscript, loops provide a way to iterate over data.
 
 ## Containers
 
-```
+```coffeescript
 container cmd arg1 arg2 --foo bar
   --kwarg value
 
@@ -198,7 +198,7 @@ Keyword arguments may by indented in a new line.
 
 > Example of an asynchronous loop
 
-```
+```coffeescript
 found = 0
 total = users count
 # This will fork the Story by `N` users to complete the operations
@@ -219,7 +219,7 @@ When `async` is applied to **loops** the Story will **wait** until all items are
 
 > Example of an asynchronous container
 
-```
+```coffeescript
 async some_long_operation arg1
 
 data = async some_long_operation arg2
