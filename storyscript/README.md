@@ -1,39 +1,130 @@
 # Storyscript
 
-> Simple, yet powerful example.
+Storyscript is a syntax-light high-level programming language that **orchestrates microservices**.
+Application logic is expressive and transparent by requiring **named arguments** in all functions and microservices.
+Built-in **service discovery** provides a powerful environment for finding services and autocomplete to assist with inputs and outputs.
 
-```coffeescript
-http server as request
+> PLACEHOLDER
+![alt text](https://d3vv6lp55qjaqc.cloudfront.net/items/05261A22002y0V0O0Z3I/IMG_BF788F07F5BB-1.jpeg?X-CloudApp-Visitor-Id=83fe0c93eb8bf3e54296d5fae9a976e4&v=3aea9602)
+> PLACEHOLDER
+
+
+Storyscript (or Stories for short) focuses on the **application logic** rather than all the *tape and glue* that bind applications together. The underlining services have a standard for **logs, metrics, fail-over, rate-limiting, tracebacks and scaling** which eliminates the need to write it within the application. This cultivates a development environment primed for rapid application development in a production-ready platform.
+
+Let's build a quick application for example. Our goals are to upload, analyze, compress and archive a video. A non-trivial application but in a **couple lines of Storyscript** we made it.
+
+```coffee
+# Registers with Asyncy Server as an endpoint
+http-endpoint method:'post' path:'/upload' as request, response
+    # generate a unique id for this upload
     id = uuid uuid4
 
-    # Using https://machinebox.io/
-    details = machinebox/videobox request.body
+    video = request.files.myUploadedVideo
 
-    mongodb insert 'videos' {'id': id, 'details': details}
+    # using https://machinebox.io find the video topics
+    topics = machinebox/videobox content:video
 
-    if details.contains_nudity is false
+    if 'nudity' in details
+        response finish code:400 message:'Sorry, nudity found in image.'
+    else
+        response finish code:201 message:'Success! Will process and store asynchronously.'
 
-        # Using https://github.com/xiph/daala
-        video = xiph/daala request.body
+    # save record in mongodb
+    mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
 
-        s3 put 's3://my-bucket/video/{{id}}.mp4' video
+    # using https://github.com/xiph/daala let's compress it to h264
+    video = xiph/daala video:video codex:'h264'
+
+    # upload to AWS S3
+    s3 put target:'/video/{{id}}.mp4' data:video
 ```
 
-**Readable high-level logic that choreographs microservices.**
+In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
 
-Inspired by the [Zen of Pyhton](https://zen-of-python.info/)
-where functions are microservices. This dynamic-type programming language is expressive, readable and syntax-light where application logic is written is transparent operations that execute microservices under-the-hood.
+> **Give it a spin!** Source code and demo here: https://github.com/asyncy/example-upload-video
 
-Storyscript's (or Stories for short) focus on **the application goals only**. Asyncy takes care of all the devops such as **logs, metrics, fail-over, rate-limiting, tracebacks and scaling**. This enabled developers to prototype into production applications quickly.
+Time to jump into syntax.
 
-The example on the right illustrates this well. The services needed to upload, analyze, compress and archive a video are expressed in a procedural which is highly readable without any "extra" development debt. In comparison, the same application would likely take hundreds of lines of code, not to mention all the devops that would be manually programmed.
+## Syntax Overview
 
-The syntax emphasis is on **readability, flexibility, and transparency**.
-All the operations developers expect are built-in and likely quite familiar.
+```coffee
+###
+Welcome!
+  This is a comment block
+###
+
+# Strings
+myString = "Hello"
+stringWithPlaceholders = "Say {{string}}!"
+# >>> Say Hello!
+
+# Numbers
+one = 1
+onethree = 1.3
+
+# Boolean
+foo = true
+bar = false
+
+# List
+letters = ['a', 'b', 'c']
+letters[0]
+# >>> 1
+
+# Object
+fruit = {'apple': 'red', 'banana': 'yellow'}
+fruit.apple
+# >>> red
+
+# Regexp
+pattern = /^foobar$/
+
+# files
+path = `/folder/name.ext`
+
+# Null
+empty = null
+
+# Conditions
+if one > 1
+    # then do this
+else if one == 1
+    # then do this
+else
+    # do this
+
+# Loops
+for child in siblings
+    # ...
+
+foreach siblings as child
+    # ...
+
+while foobar
+    # ...
+
+# Services
+output = service cmd key:value
+
+# Functions
+function walk distance:number -> someOutput:sting
+    # ...
+    return "Ok, walked {{distance}}km!"
+
+walk distance:10
+# >>> Ok, walked 10km!
+walk distance:6.1
+# >>> Ok, walked 6.1km!
+
+# Chaining calls
+myService cmd foo:(myString split by:',')
+              bar:(myObject find key:(myList random))
+```
+
 
 ## Strings
 
-```coffeescript
+```coffee
 data = "foobar"
 
 long_string = "Hi Friend,
@@ -51,10 +142,8 @@ data_formatted = "Hello, {{where}}"
 # >>> "Hello, Earth"
 ```
 
-:::v-pre
-Like Python and many other languages, Storyscript supports strings as delimited by the `"` or `'` characters.
+Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
 Storyscript also supports string interpolation within "-quoted strings, using `{{ … }}`.
-:::
 Single-quoted strings are literal. You may even use interpolation in object keys.
 
 Multiline strings are allowed in Storyscript.
@@ -66,19 +155,39 @@ The indentation level that begins the block is maintained throughout, so you can
 
 Double-quoted block strings, like other double-quoted strings, allow interpolation.
 
+### Mutations
+
+```sh
+"abc" length
+# >>> 3
+
+"abc" replace before:'b' after:'Z'
+# >>> aZc
+
+"foo bar" capitalize
+# >>> Foo Bar
+
+"a,b,c" split by:','
+# >>> ['a', 'b', 'c']
+
+"abc" upper
+# >>> ABC
+
+"ABC" lower
+# >>> abc
+```
+
 ## Numbers
 
-```coffeescript
+```coffee
 int = 1
 number = 1.2
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
 
 ## Comments
 
-```coffeescript
+```coffee
 ###
 Large
   Comment
@@ -97,134 +206,130 @@ Comments are ignored by the compiler, though the compiler makes its best effort 
 
 ## Boolean
 
-```coffeescript
-# These are true
+```coffee
 foo = true
-foo = yes
-
-# These are false
-bar = false
 bar = no
 ```
 
-As in YAML, `on` and `yes` are the same as boolean `true`, while `off` and `no` are boolean `false`.
-
 ## Lists
 
-```coffeescript
+```coffee
 list_inline = [string, 1, 2]
-list = [
-  string
-  1
+list_multiline = [
+  string,
+  1,
   2
 ]
+```
 
+### Mutations
+
+```py
+['a', 'b', 'c'] length
+# >>> 3
+
+['a', 'b', 'c'] join by:','
+# >>> a,b,c
+
+['a', 'b', 'c'] reverse
+# >>> ['c', 'b', 'a']
+
+['a', 'b', 'c'] shift from:'left'
+# >>> a
+# the list becomes ['b', 'c']
+
+['a', 'b', 'c'] index of:'b'
+# >>> 1
+
+['1', '2', '3'] apply function:Int
+# >>> [1, 2, 3]
+
+['a', 'b', 'c'] random
+# randomly choose >>> a
+```
+
+## Objects
+
+```coffee
 object_inline = {'foo': 'bar', 'apples': 'oranges'}
-object = {
-  'foo': 'bar'
+object_multiline = {
+  'foo': 'bar',
   'apples': 'oranges'
 }
 ```
 
-The Storyscript literals for objects and arrays look very similar to Python. When each property is listed on its own line, the commas are optional.
+### Mutations
+
+```py
+{'a': 1, 'b': 2} length
+# >>> 2
+
+{'a': 1, 'b': 2} keys
+# >>> ['a', 'b']
+
+{'a': 1, 'b': 2} values
+# >>> [1, 2]
+
+{'a': 1, 'b': 2} items
+# >>> [['a', 1], ['b', 2]]
+
+{'a': 1, 'b': 2} pop key:'a'
+# >>> 1
+# resulting object = {'b': 2}
+```
+
 
 ## Conditions
 
-```coffeescript
+```coffee
 if foo = bar
-    ...
+  # ...
+else if foo > bar
+  # ...
 else
-    ...
+  # ...
 
 if (foo > 0 or cat is not dog) or foobar like /regexp/
-  ...
+  # ...
 ```
 
 `if`/`else` statements can be written without the use of parentheses and curly brackets. As with functions and other block expressions, multi-line conditionals are delimited by indentation.
 
-
-## Crontab and waits
-
-```coffeescript
-wait '5 minutes'
-  ...
-
-every 'thursday at 5pm'
-  ...
-
-crontab '0 5,17 * * *'
-  # run twice a day
-  ...
-
-in '5 days'
-  ...
-```
-
-Storyscript comes with built-in crontab and waits.
-
 ## Looping
 
-```coffeescript
+```coffee
 for child in siblings
-  ...
+  # ...
 
 foreach siblings as child
-  ...
+  # ...
 
 while foobar
-  ...
+  # ...
 ```
 
 In Storyscript, loops provide a way to iterate over data.
 
-## Containers
+## Services
 
-```coffeescript
-container cmd arg1 arg2 --foo bar
-  --kwarg value
+```coffee
+# Service with command and arguments
+service cmd key:value anotherKey:value
 
-# Assign output to variable
-output = container cmd foobar
+# Service without command and assigned to variable
+output = service key:value
+                 anotherKey:value
 
-# Streaming container
-my-team/our-container my-command as data
-  log data
+# Streaming service
+service dothis key:value as data
+    # ...
 ```
 
-In Storyscript, the syntax to run a container appears natural to that of shell/bash.
-Keyword arguments may by indented in a new line.
+In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
+Arguments may by indented in a new line.
 
-## Async
+## More coming soon...
 
-> Example of an asynchronous loop
-
-```coffeescript
-found = 0
-total = users count
-# This will fork the Story by `N` users to complete the operations
-async foreach users as user
-    profile = fullcontact person --email user.email
-    if profile
-        found += 1
-
-# Now return to asynchronous operations
-log "Found {{found}} of {{total}} users."
-# >>> Found 10 or 12 users.
-```
-
-As the name may suggest, asynchronous operations are trivial in Storyscript powered by Asyncy.
-By adding `async` to any container or loop will make the operation asynchronous.
-
-When `async` is applied to **loops** the Story will **wait** until all items are complete before continuing the Story.
-
-> Example of an asynchronous container
-
-```coffeescript
-async some_long_operation arg1
-
-data = async some_long_operation arg2
-...         # stuff can happen while some_long_operation is running
-log data    # wait for some_long_operation to complete before logging
-```
-
-When `async` is applied to **services** it will execute the service and continuing the Story without waiting for the result. However, when the assigned variable (e.g., `data` on the right) is needed the Story will pause until the operation is complete.
+More exciting features are coming soon:
+1. Built-in cron/waiting
+2. Asynchronous primitives
