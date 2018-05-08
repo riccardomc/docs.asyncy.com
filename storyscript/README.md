@@ -143,7 +143,7 @@ data_formatted = "Hello, {{where}}"
 ```
 
 Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
-Storyscript also supports string interpolation within "-quoted strings, using `{{ … }}`.
+Storyscript also supports string interpolation within "-quoted strings, using `{{ variable }}`.
 Single-quoted strings are literal. You may even use interpolation in object keys.
 
 Multiline strings are allowed in Storyscript.
@@ -331,5 +331,6 @@ Arguments may by indented in a new line.
 ## More coming soon...
 
 More exciting features are coming soon:
+
 1. Built-in cron/waiting
 2. Asynchronous primitives
