@@ -8,10 +8,12 @@ module.exports = {
     sidebar: [
       '/',
       '/storyscript/',
-      '/plugins/',
-      '/containers/',
+      '/services/',
+      '/app/',
+      '/hub/',
+      '/rest-api/',
       '/graphql/',
-      '/errors/',
+      '/plugins/',
       '/faq/',
     ]
   }
