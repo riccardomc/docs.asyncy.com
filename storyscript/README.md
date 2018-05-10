@@ -142,9 +142,11 @@ data_formatted = "Hello, {{where}}"
 # >>> "Hello, Earth"
 ```
 
+::: v-pre
 Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
 Storyscript also supports string interpolation within "-quoted strings, using `{{ variable }}`.
 Single-quoted strings are literal. You may even use interpolation in object keys.
+:::
 
 Multiline strings are allowed in Storyscript.
 Lines are joined by a single space unless they end with a backslash.
