@@ -2,8 +2,16 @@
   <div class="page">
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
-      <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-      <OutboundLink/>
+      <span class="link-container">
+        <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
+        <OutboundLink/>
+      </span>
+      <span class="link-container">
+        <a href="mailto:support@asyncy.com">Get support</a>
+      </span>
+      <span class="link-container">
+        <a class="item typeform-share button" href="https://asyncy.typeform.com/to/deaLvw" data-mode="popup" data-hide-headers="true" data-hide-footer="true" target="_blank">Give Feedback</a>
+      </span>
     </div>
     <div class="content page-nav" v-if="prev || next">
       <p class="inner">
@@ -130,6 +138,9 @@ function find (page, items, offset) {
   a
     color lighten($textColor, 25%)
     margin-right 0.25rem
+
+.link-container
+  margin-right 1.8rem
 
 .page-nav.content
   padding-top 1rem !important
