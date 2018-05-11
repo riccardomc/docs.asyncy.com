@@ -40,10 +40,6 @@ http-endpoint method:'post' path:'/upload' as request, response
 
 In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
 
-::: tip
-**Give it a spin!** Source code is on [GitHub](https://github.com/asyncy/example-upload-video).
-:::
-
 > Blog: [Why Asyncy built a DSL called Storyscript](/)
 
 
@@ -425,7 +421,7 @@ if 'foobar' like pattern
 
 Regular expressions are supported without any special characters of escaping necessary.
 
-## Regular Expressions Methods
+### Regular Expressions Methods
 
 ```coffeescript
 pattern = /(?P<key>\w):(?P<value>\w)/
@@ -456,8 +452,8 @@ Repository clone contents are located in the `/app/` directory, which is read-on
 
 ## Wait and Cron
 
-::: warn
-**Coming Soon!** This behavior is not yet developed. Feedback welcome!
+::: warning Coming Soon!
+This behavior is not yet developed. Feedback welcome!
 :::
 
 Asyncy has built-in delays that can be applied seamlessly in Storyscript.
@@ -473,8 +469,8 @@ cron hour:9
 The wait and cron are a special service that use Asyncy internal scheduler.
 
 ## Async
-::: warn
-**Coming Soon!** This behavior is not yet developed. Feedback welcome!
+::: warning Coming Soon!
+This behavior is not yet developed. Feedback welcome!
 :::
 
 Asynchronous commands provide a way to scale out processes and apply multithreading to data flow.
