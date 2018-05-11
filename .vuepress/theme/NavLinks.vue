@@ -104,6 +104,8 @@ export default {
 .nav-links
   display inline-block
   a
+    font-weight normal
+    font-size 1.05em
     line-height 1.4rem
     color inherit
     &:hover, &.router-link-active
@@ -112,7 +114,7 @@ export default {
     cursor pointer
     position relative
     display inline-block
-    margin-left 1.5rem
+    margin-left 1.8rem
     line-height 2rem
   .repo-link
     margin-left 1.5rem
@@ -126,8 +128,18 @@ export default {
   .nav-links a
     &:hover, &.router-link-active
       color $headerLinkHoverColor
-  .nav-item > a
-    &:hover, &.router-link-active
-      margin-bottom -2px
-      border-bottom 2px solid lighten($headerLinkHoverUnderlineColor, 8%)
+  .nav-item
+    &:before
+      content ""
+      position absolute
+      width 100%
+      height 2px
+      bottom -1px
+      background-color $headerLinkHoverUnderlineColor
+      visibility hidden
+      transform scaleX(0)
+      transition all 0.15s ease-out 0s
+    &:hover:before
+      visibility visible
+      transform scaleX(1)
 </style>

@@ -148,11 +148,12 @@ export default {
     border 1px solid darken($borderColor, 10%)
     border-radius 0.4em;
     font-size 0.9rem
-    line-height 2rem
+    line-height 2.5rem
     padding 0 0.5rem 0 2rem
     outline none
     transition all .2s ease
     background #fff url(./search.svg) 0.6rem 0.5rem no-repeat
+    background-position 0.6rem 49%
     background-size 1rem
     &:focus
       cursor auto
