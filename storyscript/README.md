@@ -4,10 +4,9 @@ Storyscript is a syntax-light high-level programming language that **orchestrate
 Application logic is expressive and transparent by requiring **named arguments** in all functions and microservices.
 Built-in **service discovery** provides a powerful environment for finding services and autocomplete to assist with inputs and outputs.
 
-> PLACEHOLDER
-![alt text](https://d3vv6lp55qjaqc.cloudfront.net/items/05261A22002y0V0O0Z3I/IMG_BF788F07F5BB-1.jpeg?X-CloudApp-Visitor-Id=83fe0c93eb8bf3e54296d5fae9a976e4&v=3aea9602)
-> PLACEHOLDER
+[[toc]]
 
+## Why Storyscript
 
 Storyscript (or Stories for short) focuses on the **application logic** rather than all the *tape and glue* that bind applications together. The underlining services have a standard for **logs, metrics, fail-over, rate-limiting, tracebacks and scaling** which eliminates the need to write it within the application. This cultivates a development environment primed for rapid application development in a production-ready platform.
 
@@ -27,7 +26,7 @@ http-endpoint method:'post' path:'/upload' as request, response
     if 'nudity' in details
         response finish code:400 message:'Sorry, nudity found in image.'
     else
-        response finish code:201 message:'Success! Will process and store asynchronously.'
+        response finish code:201 message:'Success! Processing asynchronously.'
 
     # save record in mongodb
     mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
@@ -41,16 +40,18 @@ http-endpoint method:'post' path:'/upload' as request, response
 
 In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
 
-> **Give it a spin!** Source code and demo here: https://github.com/asyncy/example-upload-video
+::: tip
+**Give it a spin!** Source code is on [GitHub](https://github.com/asyncy/example-upload-video).
+:::
 
-Time to jump into syntax.
+> Blog: [Why Asyncy built a DSL called Storyscript](/)
+
 
 ## Syntax Overview
 
 ```coffeescript
 ###
-Welcome!
-  This is a comment block
+Meet Storyscript
 ###
 
 # Strings
@@ -75,11 +76,15 @@ letters[0]
 fruit = {'apple': 'red', 'banana': 'yellow'}
 fruit.apple
 # >>> red
+fruit['banana']
+# >>> yellow
 
 # Regexp
-pattern = /^foobar$/
+pattern = /^foobar/
+('foobar' like pattern)
+# >>> true
 
-# files
+# Files
 path = `/folder/name.ext`
 
 # Null
@@ -94,9 +99,6 @@ else
     # do this
 
 # Loops
-for child in siblings
-    # ...
-
 foreach siblings as child
     # ...
 
@@ -113,12 +115,15 @@ function walk distance:number -> someOutput:sting
 
 walk distance:10
 # >>> Ok, walked 10km!
-walk distance:6.1
-# >>> Ok, walked 6.1km!
 
 # Chaining calls
 myService cmd foo:(myString split by:',')
               bar:(myObject find key:(myList random))
+
+# import another story
+import `stories/folder/file.story` as MyStory
+# Call a method in that story
+res = MyStory.MyFunction key:value
 ```
 
 
@@ -157,9 +162,9 @@ The indentation level that begins the block is maintained throughout, so you can
 
 Double-quoted block strings, like other double-quoted strings, allow interpolation.
 
-### Mutations
+### String Methods
 
-```shell
+```coffeescript
 "abc" length
 # >>> 3
 
@@ -209,22 +214,22 @@ Comments are ignored by the compiler, though the compiler makes its best effort 
 ## Boolean
 
 ```coffeescript
-foo = true
-bar = no
+happy = true
+sad = false
 ```
 
 ## Lists
 
 ```coffeescript
-list_inline = [string, 1, 2]
+list_inline = ["string", 1, 2]
 list_multiline = [
-  string,
+  "string",
   1,
   2
 ]
 ```
 
-### Mutations
+### List Methods
 
 ```python
 ['a', 'b', 'c'] length
@@ -260,7 +265,7 @@ object_multiline = {
 }
 ```
 
-### Mutations
+### Object Methods
 
 ```python
 {'a': 1, 'b': 2} length
@@ -300,39 +305,186 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 ## Looping
 
 ```coffeescript
-for child in siblings
-  # ...
-
 foreach siblings as child
-  # ...
+    # ...
 
-while foobar
-  # ...
+while foobar is true
+    # ...
 ```
 
 In Storyscript, loops provide a way to iterate over data.
 
-## Services
+Data can be collected during loops and passed to an output list.
 
 ```coffeescript
-# Service with command and arguments
-service cmd key:value anotherKey:value
+myList = [1, 2, 3]
+result_list = foreach myList as item
+    # ...
+    yield (item + 10)
+    # ...
+    yield (item + 5)
 
-# Service without command and assigned to variable
-output = service key:value
-                 anotherKey:value
+log myList
+# >>> [11, 6, 12, 7, 13, 8]
+```
 
-# Streaming service
-service dothis key:value as data
+Loops have reserved keywords for ending and continuing loops.
+
+```coffeescript
+foreach siblings as child
+    # ...
+    if do_end_loop
+        end loop
+    if do_skip_to_next_item
+        continue loop
     # ...
 ```
 
+## Functions
+
+```coffeescript
+function getUser id:int -> user:object
+    someone = (sql query:'select * from users where id={{id}} limit 1;')[0]
+    someone.contact = fullcontact person email:someone.email
+    return someone
+
+userA = getUser id:7
+userB = getUser id:10
+```
+
+The example above is a function what queries the database and also downloads their FullContact profile.
+
+Function must define their inputs and outputs which help with transparency, autocomplete and type checking during the Asyncy CI process.
+
+
+## Services
+
+```coffeescript
+# Service with command and arguments Service
+service cmd key:value foo:bar
+
+# Service without command
+service key:value foo:bar
+
+# Service output assigned to variable
+foobar = service cmd key:value
+
+# Arguments may by indented under the service
+service cmd key:value
+            foo:bar
+```
+
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
-Arguments may by indented in a new line.
 
-## More coming soon...
+These services may be Docker containers that expose commands and define their interface. More details in [Finding and Building Services](/services/)
 
-More exciting features are coming soon:
+## Streaming Service
 
-1. Built-in cron/waiting
-2. Asynchronous primitives
+Services may stream data and the output is submitted back to Storyscript.
+
+```coffeescript
+service cmd key:value as data
+    # every event will enter this block
+```
+
+A good example of this is streaming Tweets by hashtag.
+
+```coffeescript
+twitter stream hashtag:'asyncy' as tweet
+    if 'awesome' in tweet.message
+        twitter retweet id:tweet.id
+```
+
+The example above will yield new tweets as they are posted to Twitter. Every new tweet will be passed into the block below in the variable `tweet`.
+
+
+## Importing
+
+```coffeescript
+import `subfolder/users.story` as Users
+# Call the function "get" which is defined in the Storyscript
+res = Users.get key:value
+```
+
+Import other Storyscripts by using the `import file as name` syntax.
+
+The file path is **relative** to the Storyscript where the `import`. Use `/folder/...` for importing from the project root or `../folder` to import from the parent folder.
+
+::: tip
+The `.story` is optional. `/stories/users.story` is equivalent to `/stories/users`.
+:::
+
+## Regular Expressions
+
+```coffeescript
+pattern = /^foo/
+
+if 'foobar' like pattern
+    log 'Awesome!'
+```
+
+Regular expressions are supported without any special characters of escaping necessary.
+
+## Regular Expressions Methods
+
+```coffeescript
+pattern = /(?P<key>\w):(?P<value>\w)/
+myString = 'foo:bar'
+
+log (pattern find data:myString)
+# >>> {"key": "foo", "value": "bar"}
+
+log (pattern matches data:myString)
+# >>> true
+```
+
+## Files
+
+Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
+
+```coffeescript
+filename = `/folder/hello.txt`
+file write path:filename data:"Hello World"
+
+log (file read path:filename)
+# >>> "Hello World"
+```
+
+Using the tick character (``` ` ```) to for assigning file paths.
+
+Repository clone contents are located in the `/app/` directory, which is read-only. For example, `/app/readme.md` will resolve to the Applications `./readme.md` file.
+
+## Wait and Cron
+
+::: warn
+**Coming Soon!** This behavior is not yet developed. Feedback welcome!
+:::
+
+Asyncy has built-in delays that can be applied seamlessly in Storyscript.
+
+```coffeescript
+wait time:'5 days'
+  # do this in 5 days
+
+cron hour:9
+  # daily at 9am do this...
+```
+
+The wait and cron are a special service that use Asyncy internal scheduler.
+
+## Async
+::: warn
+**Coming Soon!** This behavior is not yet developed. Feedback welcome!
+:::
+
+Asynchronous commands provide a way to scale out processes and apply multithreading to data flow.
+
+```coffeescript
+res = async some_long_process cmd
+# ...
+log res.data  # will wait until res is complete until data is resolved
+
+# run through all users at the same time, spawning users(N) processes
+async foreach users as user
+  user.profile = fullcontact person email:user.email
+```

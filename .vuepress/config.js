@@ -1,20 +1,28 @@
 module.exports = {
-  title: 'Asyncy Docs',
-  description: '',
+  title: 'Asyncy',
+  description: 'Buliding applications in Storyscript on Asyncy',
   ga: 'UA-111475156-5',
   themeConfig: {
     repo: 'asyncy/docs.asyncy.com',
-    repoLabel: 'Contribute!',
+    repoLabel: 'Edit in GitHub',
     editLinks: true,
     nav: [
-      { text: 'Platform', link: 'https://5af1a22e1f12b77e9ad384c2--asyncy-homepage.netlify.com/platform' },
-      { text: 'Documentation', link: '/' },
-      { text: 'About', link: 'https://5af1a22e1f12b77e9ad384c2--asyncy-homepage.netlify.com/about' },
-      { text: 'Events', link: 'https://5af1a22e1f12b77e9ad384c2--asyncy-homepage.netlify.com/events' },
-      { text: 'Contact', link: 'https://5af1a22e1f12b77e9ad384c2--asyncy-homepage.netlify.com/contact' }
+      {
+        text: 'Documentation',
+        items: [
+          { text: 'Quick Start', link: '/quick-start/' },
+          { text: 'Storyscript', link: '/storyscript/' },
+          { text: 'Services', link: '/services/' },
+          { text: 'FAQ', link: '/faq/' }
+        ]
+      },
+      { text: 'Blog', link: 'https://blog.asyncy.com' },
+      { text: 'App', link: 'https://app.asyncy.com' },
+      { text: 'Hub', link: 'https://hub.asyncy.com' },
+      { text: 'Platform', link: 'https://asyncy.com/platform' }
     ],
     sidebar: [
-      '/',
+      '/quick-start/',
       {
         title: 'Building Applications',
         collapsable: false,
