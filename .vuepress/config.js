@@ -7,19 +7,10 @@ module.exports = {
     repoLabel: 'Edit in GitHub',
     editLinks: true,
     nav: [
-      {
-        text: 'Documentation',
-        items: [
-          { text: 'Quick Start', link: '/quick-start/' },
-          { text: 'Storyscript', link: '/storyscript/' },
-          { text: 'Services', link: '/services/' },
-          { text: 'FAQ', link: '/faq/' }
-        ]
-      },
+      { text: 'Platform', link: 'https://asyncy.com/platform' },
       { text: 'Blog', link: 'https://blog.asyncy.com' },
       { text: 'App', link: 'https://app.asyncy.com' },
-      { text: 'Hub', link: 'https://hub.asyncy.com' },
-      { text: 'Platform', link: 'https://asyncy.com/platform' }
+      { text: 'Hub', link: 'https://hub.asyncy.com' }
     ],
     sidebar: [
       '/quick-start/',
