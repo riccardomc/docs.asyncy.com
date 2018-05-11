@@ -114,10 +114,10 @@ export default {
     cursor pointer
     position relative
     display inline-block
-    margin-left 1.8rem
+    margin-left 4rem
     line-height 2rem
   .repo-link
-    margin-left 1.5rem
+    margin-left 4rem
 
 @media (max-width: $MQMobile)
   .nav-links

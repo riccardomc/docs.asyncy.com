@@ -130,7 +130,6 @@ function find (page, items, offset) {
 @import './styles/config.styl'
 
 .page
-  padding-top 1.5em
   padding-bottom 2rem
 
 .edit-link.content

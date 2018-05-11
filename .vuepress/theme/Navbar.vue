@@ -42,13 +42,13 @@ export default {
 @import './styles/config.styl'
 
 .navbar
-  padding 1.9rem 1.5rem
-  line-height $navbarHeight - 1.4rem
+  padding 1.3rem 1.5rem
+  line-height $navbarHeight - 2.6rem
   position relative
   a, span, img
     display inline-block
   .logo
-    height $navbarHeight - 3.9rem
+    height $navbarHeight - 2.7rem
     min-width $navbarHeight - 2.6rem
     margin-right 0.8rem
     vertical-align top
