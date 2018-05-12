@@ -59,7 +59,7 @@ module.exports = {
         children: [
         ]
       },
-      '/faq/'
+      '/support/'
     ]
   }
 }

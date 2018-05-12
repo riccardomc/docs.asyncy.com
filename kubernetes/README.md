@@ -1,3 +1,5 @@
 # Kubernetes (Coming Soon)
 
-The Asyncy Kubernetes deployment is planned for late 2018.
+Deploy Asyncy on-premise with Kubernetes. Available early 2019.
+
+[ TODO drop your email in ]
