@@ -199,6 +199,16 @@ int = 1
 number = 1.2
 ```
 
+### Number Methods
+
+```coffeescript
+1 is_odd
+# true
+
+2 is_even
+# true
+```
+
 
 ## Comments
 
@@ -509,6 +519,55 @@ cron hour:9
 ```
 
 The wait and cron are a special service that use Asyncy internal scheduler.
+
+## Type Checking
+
+```coffeescript
+1 type
+# int
+
+true type
+# bool
+
+"" type
+# string
+
+[] type
+# list
+
+{} type
+# object
+
+null type
+# null
+
+/^foobar/ type
+# regexp
+
+function foobar ->
+
+foobar type
+# function
+```
+
+Use the method `type` to get the type of a variable as a sting.
+
+```coffeescript
+(1 is_int) and (true is_bool) and ("" is_string)
+# true
+
+([] is_list) and ({} is_object)
+# true
+
+(1 is_number) and (1.2 is_number)
+# true
+
+{} is_string
+# false
+
+```
+
+Type checking can be applied to any type.
 
 ## Async
 ::: warning Coming Soon!
