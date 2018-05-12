@@ -472,9 +472,6 @@ Use the `raise` keyword to raise the exception, bubbling up to the next try bloc
 
 ```coffeescript
 pattern = /^foo/
-
-if 'foobar' like pattern
-    log 'Awesome!'
 ```
 
 Regular expressions are supported without any special characters of escaping necessary.
@@ -485,11 +482,17 @@ Regular expressions are supported without any special characters of escaping nec
 pattern = /(?P<key>\w):(?P<value>\w)/
 myString = 'foo:bar'
 
-pattern find data:myString
+pattern matches in:myString
+# true
+
+pattern find in:myString
 # {"key": "foo", "value": "bar"}
 
-pattern matches data:myString
-# true
+/(\w+)/ find in:'foo bar' many:true
+# ['foo', 'bar']
+
+/(?P<name>\w+)/ find in:'foo bar' many:true
+# [{'name': 'foo'}, {'name': 'bar'}]
 ```
 
 ## Files
