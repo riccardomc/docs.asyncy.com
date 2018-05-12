@@ -52,8 +52,8 @@ Meet Storyscript
 
 # Strings
 myString = "Hello"
-stringWithPlaceholders = "Say {{string}}!"
-# >>> Say Hello!
+"Say {{string}}!"  # string formatting
+# Say Hello!
 
 # Numbers
 one = 1
@@ -66,19 +66,19 @@ bar = false
 # List
 letters = ['a', 'b', 'c']
 letters[0]
-# >>> 1
+# 1
 
 # Object
 fruit = {'apple': 'red', 'banana': 'yellow'}
 fruit.apple
-# >>> red
+# red
 fruit['banana']
-# >>> yellow
+# yellow
 
 # Regexp
 pattern = /^foobar/
 ('foobar' like pattern)
-# >>> true
+# true
 
 # Files
 path = `/folder/name.ext`
@@ -110,16 +110,16 @@ function walk distance:number -> someOutput:sting
     return "Ok, walked {{distance}}km!"
 
 walk distance:10
-# >>> Ok, walked 10km!
+# Ok, walked 10km!
 
 # Chaining calls
 myService cmd foo:(myString split by:',')
               bar:(myObject find key:(myList random))
 
 # import another story
-import `stories/folder/file.story` as MyStory
+import MyFunction from `stories/folder/file`
 # Call a method in that story
-res = MyStory.MyFunction key:value
+res = MyFunction key:value
 ```
 
 
@@ -130,17 +130,17 @@ data = "foobar"
 
 long_string = "Hi Friend,
 This is a long string."
-# >>> "Hi Friend, This is a long string."
+# Hi Friend, This is a long string.
 
 more_data = """
     The quick brown fox
     jumps over the lazy dog.
 """
-# >>> The quick brown fox\njumps over the lazy dog.
+# The quick brown fox\njumps over the lazy dog.
 
 where = "Earth"
 data_formatted = "Hello, {{where}}"
-# >>> "Hello, Earth"
+# Hello, Earth
 ```
 
 ::: v-pre
@@ -162,22 +162,25 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 
 ```coffeescript
 "abc" length
-# >>> 3
+# 3
 
 "abc" replace before:'b' after:'Z'
-# >>> aZc
+# aZc
 
 "foo bar" capitalize
-# >>> Foo Bar
+# Foo Bar
+
+"foo bar" capitalize first:1
+# Foo bar
 
 "a,b,c" split by:','
-# >>> ['a', 'b', 'c']
+# ['a', 'b', 'c']
 
-"abc" upper
-# >>> ABC
+"abc" uppercase
+# ABC
 
-"ABC" lower
-# >>> abc
+"ABC" lowercase
+# abc
 ```
 
 ## Numbers
@@ -229,26 +232,26 @@ list_multiline = [
 
 ```python
 ['a', 'b', 'c'] length
-# >>> 3
+# 3
 
 ['a', 'b', 'c'] join by:','
-# >>> a,b,c
+# a,b,c
 
 ['a', 'b', 'c'] reverse
-# >>> ['c', 'b', 'a']
+# ['c', 'b', 'a']
 
 ['a', 'b', 'c'] shift from:'left'
-# >>> a
+# a
 # the list becomes ['b', 'c']
 
 ['a', 'b', 'c'] index of:'b'
-# >>> 1
+# 1
 
 ['1', '2', '3'] apply function:Int
-# >>> [1, 2, 3]
+# [1, 2, 3]
 
 ['a', 'b', 'c'] random
-# randomly choose >>> a
+# c
 ```
 
 ## Objects
@@ -265,20 +268,22 @@ object_multiline = {
 
 ```python
 {'a': 1, 'b': 2} length
-# >>> 2
+# 2
 
 {'a': 1, 'b': 2} keys
-# >>> ['a', 'b']
+# ['a', 'b']
 
 {'a': 1, 'b': 2} values
-# >>> [1, 2]
+# [1, 2]
 
 {'a': 1, 'b': 2} items
-# >>> [['a', 1], ['b', 2]]
+# [['a', 1], ['b', 2]]
 
-{'a': 1, 'b': 2} pop key:'a'
-# >>> 1
-# resulting object = {'b': 2}
+obj = {'a': 1, 'b': 2}
+obj pop key:'a'
+# 1
+obj
+# {'b': 2}
 ```
 
 
@@ -314,14 +319,14 @@ Data can be collected during loops and passed to an output list.
 
 ```coffeescript
 myList = [1, 2, 3]
-result_list = foreach myList as item
+resultList = foreach myList as item
     # ...
     yield (item + 10)
     # ...
     yield (item + 5)
 
-log myList
-# >>> [11, 6, 12, 7, 13, 8]
+resultList
+# [11, 6, 12, 7, 13, 8]
 ```
 
 Loops have reserved keywords for ending and continuing loops.
@@ -397,12 +402,12 @@ The example above will yield new tweets as they are posted to Twitter. Every new
 ## Importing
 
 ```coffeescript
-import `subfolder/users.story` as Users
+import GetUser from `subfolder/users`
 # Call the function "get" which is defined in the Storyscript
-res = Users.get key:value
+res = GetUser key:value
 ```
 
-Import other Storyscripts by using the `import file as name` syntax.
+Import other Storyscripts by using the `import method from file` syntax.
 
 The file path is **relative** to the Storyscript where the `import`. Use `/folder/...` for importing from the project root or `../folder` to import from the parent folder.
 
@@ -427,11 +432,11 @@ Regular expressions are supported without any special characters of escaping nec
 pattern = /(?P<key>\w):(?P<value>\w)/
 myString = 'foo:bar'
 
-log (pattern find data:myString)
-# >>> {"key": "foo", "value": "bar"}
+pattern find data:myString
+# {"key": "foo", "value": "bar"}
 
-log (pattern matches data:myString)
-# >>> true
+pattern matches data:myString
+# true
 ```
 
 ## Files
@@ -442,8 +447,8 @@ Asyncy provides access to a shared volume, unique to the Application. This volum
 filename = `/folder/hello.txt`
 file write path:filename data:"Hello World"
 
-log (file read path:filename)
-# >>> "Hello World"
+file read path:filename
+# Hello World
 ```
 
 Using the tick character (``` ` ```) to for assigning file paths.
