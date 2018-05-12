@@ -207,6 +207,12 @@ number = 1.2
 
 2 is_even
 # true
+
+1 increment
+# 2
+
+2 decrement
+# 1
 ```
 
 
