@@ -120,6 +120,15 @@ myService cmd foo:(myString split by:',')
 import MyFunction from `stories/folder/file`
 # Call a method in that story
 res = MyFunction key:value
+
+# try and catch
+try
+  # ...
+catch as error
+  # ...
+  retry  # try the block again
+  # -or-
+  raise  # bubble it up
 ```
 
 
@@ -414,6 +423,34 @@ The file path is **relative** to the Storyscript where the `import`. Use `/folde
 ::: tip
 The `.story` is optional. `/stories/users.story` is equivalent to `/stories/users`.
 :::
+
+## Exception Handling
+
+```coffeescript
+try
+  # ...
+catch as error
+  # ...
+finally
+  # ...
+```
+
+In Storyscript, the `try` expressions catch exceptions and pass the error to the `catch` block.
+
+The `finally` block is **always** entered regardless of an exception being raised or not, use it for cleanup commands.
+
+You may omit both the `catch` and `finally`.
+
+```coffeescript
+try
+  # ...
+catch as error
+  # ...
+  raise
+```
+
+Use the `raise` keyword to raise the exception, bubbling up to the next try block or stopping the story.
+
 
 ## Regular Expressions
 
