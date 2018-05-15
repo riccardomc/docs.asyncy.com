@@ -23,7 +23,7 @@ http-endpoint method:'post' path:'/upload' as request, response
     # using https://machinebox.io find the video topics
     topics = machinebox/videobox content:video
 
-    if 'nudity' in details
+    if 'nudity' in topics
         response finish code:400 message:'Sorry, nudity found in image.'
     else
         response finish code:201 message:'Success! Processing asynchronously.'
