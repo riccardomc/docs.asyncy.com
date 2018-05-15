@@ -458,6 +458,27 @@ The file path is **relative** to the Storyscript where the `import`. Use `/folde
 The `.story` is optional. `/stories/users.story` is equivalent to `/stories/users`.
 :::
 
+
+## Operations
+
+```coffeescript{2}
+if something_went_wrong
+    end story
+```
+
+Use `end story` to stop the story and exit now.
+
+```coffeescript{2}
+if this_data == ''
+    pause story
+```
+
+Pause the Story which will allow user-intervention to inspect and adjust accordingly.
+
+::: warning
+Pausing a Story will close any open thread (http connections, streaming services, etc.).
+:::
+
 ## Exception Handling
 
 ```coffeescript
