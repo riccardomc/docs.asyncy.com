@@ -334,16 +334,21 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 ## Looping
 
 ```coffeescript
-foreach siblings as child
+foreach some_list as item
     # ...
 
-while foobar is true
+foreach some_list as index, item
+    # ...
+
+foreach some_object as key, value
+    # ...
+
+while (foobar is true)
     # ...
 ```
 
 In Storyscript, loops provide a way to iterate over data.
 
-Data can be collected during loops and passed to an output list.
 
 ```coffeescript
 myList = [1, 2, 3]
@@ -357,17 +362,27 @@ resultList
 # [11, 6, 12, 7, 13, 8]
 ```
 
-Loops have reserved keywords for ending and continuing loops.
+```coffeescript
+n = 5
+res = while (n decrement) as i
+  yield i
+# res = [4, 3, 2, 1]
+```
+
+Data can be collected during loops and passed to an output list.
+
 
 ```coffeescript
 foreach siblings as child
     # ...
     if do_end_loop
-        end loop
+        end
     if do_skip_to_next_item
-        continue loop
+        continue
     # ...
 ```
+
+Loops have reserved keywords for ending and continuing loops.
 
 ## Functions
 
