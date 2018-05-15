@@ -25,8 +25,9 @@ http-endpoint method:'post' path:'/upload' as request, response
 
     if 'nudity' in topics
         response finish code:400 message:'Sorry, nudity found in image.'
-    else
-        response finish code:201 message:'Success! Processing asynchronously.'
+        end story
+
+    response finish code:201 message:'Success! Processing asynchronously.'
 
     # save record in mongodb
     mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
