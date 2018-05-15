@@ -82,7 +82,9 @@ pattern = /^foobar/
 # true
 
 # Files
-path = `/folder/name.ext`
+myFile = file '/folder/hello.txt'
+myFile read
+# Hello world
 
 # Null
 empty = null
@@ -428,7 +430,7 @@ The example above will yield new tweets as they are posted to Twitter. Every new
 ## Importing
 
 ```coffeescript
-import GetUser from `subfolder/users`
+import GetUser from 'subfolder/users'
 # Call the function "get" which is defined in the Storyscript
 res = GetUser key:value
 ```
@@ -501,16 +503,35 @@ pattern find in:myString
 Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
 
 ```coffeescript
-filename = `/folder/hello.txt`
-file write path:filename data:"Hello World"
-
-file read path:filename
+myFile = (file '/folder/hello.txt')
+myFile write 'Hello World'
+myFile read
 # Hello World
 ```
 
-Using the tick character (``` ` ```) to for assigning file paths.
-
 Repository clone contents are located in the `/app/` directory, which is read-only. For example, `/app/readme.md` will resolve to the Applications `./readme.md` file.
+
+## File Methods
+
+```coffeescript
+myFile write 'Hello '
+myFile write 'world'
+
+myFile read
+# Hello world
+
+myFile size
+# 5287
+
+myFile size pretty:true
+# 5mb
+
+myFile empty  # empty contents
+
+myFile delete  # destroy file
+
+myFile iter  # yield a list of lines
+```
 
 ## Wait and Cron
 
