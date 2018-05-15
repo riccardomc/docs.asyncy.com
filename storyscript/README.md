@@ -82,9 +82,13 @@ pattern = /^foobar/
 # true
 
 # Files
-myFile = file '/folder/hello.txt'
+myFile = File '/folder/hello.txt'
 myFile read
 # Hello world
+
+# Date
+birthday = Date year:2018 month:1 day:1
+tomorrow = (Date now) + (Interval days:1)
 
 # Null
 empty = null
@@ -255,6 +259,35 @@ list_multiline = [
   2
 ]
 ```
+
+
+## Date, Internals and Ranges
+
+```coffeescript
+birthday = Date year:2018 month:1 day:2
+tomorrow = (Date now) + (Interval days:1)
+
+range = Range from:(Date now) to:tomorrow
+```
+
+### Date Methods
+
+```coffeescript
+[bday year, bday month, bday day, bday hour, bday minute, bday second]
+# [2018, 1, 1, 17, 32, 18]
+
+bday format 'YYYY-mm-dd'
+# 2018-01-02
+```
+
+### Range Methods
+
+```coffeescript
+range days round:'down' # number of days within the range
+# year, months, days, hours, minutes, seconds
+# round: down, nearest, up
+```
+
 
 ### List Methods
 
@@ -539,7 +572,7 @@ pattern find in:myString
 Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
 
 ```coffeescript
-myFile = (file '/folder/hello.txt')
+myFile = (File '/folder/hello.txt')
 myFile write 'Hello World'
 myFile read
 # Hello World
@@ -578,11 +611,14 @@ This behavior is not yet developed. Feedback welcome!
 Asyncy has built-in delays that can be applied seamlessly in Storyscript.
 
 ```coffeescript
-wait time:'5 days'
-  # do this in 5 days
+wait days:5 hours:2
+    # do this in 5 days and 2 hours
+
+wait date:((Date now) + (Interval day:1))
+    # Hello, Tomorrow!
 
 cron hour:9
-  # daily at 9am do this...
+    # daily at 9am do this...
 ```
 
 The wait and cron are a special service that use Asyncy internal scheduler.
@@ -591,47 +627,55 @@ The wait and cron are a special service that use Asyncy internal scheduler.
 
 ```coffeescript
 1 type
-# int
+# Int
 
 true type
-# bool
+# Bool
 
 "" type
-# string
+# String
 
 [] type
-# list
+# List
 
 {} type
-# object
+# Object
 
 null type
-# null
+# Null
+
+(Date now) type
+# Date
+
+(Interval days:1) type
+# Interval
+
+(Range from:foo to:bar) type
+# Range
 
 /^foobar/ type
-# regexp
+# Regexp
 
 function foobar ->
 
 foobar type
-# function
+# Function
 ```
 
 Use the method `type` to get the type of a variable as a sting.
 
 ```coffeescript
-(1 is_int) and (true is_bool) and ("" is_string)
+(1 is Int) and (true is Bool) and ("" is String)
 # true
 
-([] is_list) and ({} is_object)
+([] is List) and ({} is Object)
 # true
 
-(1 is_number) and (1.2 is_number)
+(1 is Number) and (1.2 is Number)
 # true
 
-{} is_string
+{} is String
 # false
-
 ```
 
 Type checking can be applied to any type.
