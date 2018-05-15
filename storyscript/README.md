@@ -318,7 +318,7 @@ obj
 ## Conditions
 
 ```coffeescript
-if foo = bar
+if foo == bar
   # ...
 else if foo > bar
   # ...
