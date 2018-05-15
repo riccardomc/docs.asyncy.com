@@ -521,7 +521,7 @@ Regular expressions are supported without any special characters of escaping nec
 pattern = /(?P<key>\w):(?P<value>\w)/
 myString = 'foo:bar'
 
-pattern matches in:myString
+pattern matches myString
 # true
 
 pattern find in:myString
