@@ -102,7 +102,7 @@ else
     # do this
 
 # Loops
-foreach siblings as child
+foreach myList as item
     # ...
 
 while foobar
@@ -124,7 +124,7 @@ myService cmd foo:(myString split by:',')
               bar:(myObject find key:(myList random))
 
 # import another story
-import MyFunction from `stories/folder/file`
+import MyFunction from 'folder/file'
 # Call a method in that story
 res = MyFunction key:value
 
@@ -233,7 +233,7 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 "foo bar" capitalize first:1
 # Foo bar
 
-"a,b,c" split by:','
+"a,b,c" split ','
 # ['a', 'b', 'c']
 
 "abc" uppercase
@@ -259,10 +259,7 @@ number = 1.2
 2 is_even
 # true
 
-1 increment
-# 2
-
-2 decrement
+-1 absolute
 # 1
 ```
 
@@ -420,46 +417,35 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 ## Looping
 
 ```coffeescript
-foreach some_list as item
+foreach myList as item
     # ...
 
-foreach some_list as index, item
+foreach myList as index, item
     # ...
 
-foreach some_object as key, value
+foreach myObject as key
+    # ...
+
+foreach myObject as key, value
     # ...
 
 while (foobar is true)
     # ...
 ```
 
-In Storyscript, loops provide a way to iterate over data.
-
-
-```coffeescript
-myList = [1, 2, 3]
-resultList = foreach myList as item
-    # ...
-    yield (item + 10)
-    # ...
-    yield (item + 5)
-
-resultList
-# [11, 6, 12, 7, 13, 8]
-```
+Accessing list index or object keys is handled automatically.
 
 ```coffeescript
 n = 5
-res = while (n decrement) as i
+res = while (n = n - 1) as i
   yield i
 # res = [4, 3, 2, 1]
 ```
 
 Data can be collected during loops and passed to an output list.
 
-
 ```coffeescript
-foreach siblings as child
+foreach myList as item
     # ...
     if do_end_loop
         end
@@ -514,24 +500,27 @@ Services may stream data and the output is submitted back to Storyscript.
 
 ```coffeescript
 service cmd key:value as data
-    # every event will enter this block
+    # iter service output
 ```
 
 A good example of this is streaming Tweets by hashtag.
 
 ```coffeescript
 twitter stream hashtag:'asyncy' as tweet
-    if 'awesome' in tweet.message
+    res = machinebox/language data:tweet.message
+    if res.tone == 'good'
         twitter retweet id:tweet.id
+        twitter like id:tweet.id
 ```
 
-The example above will yield new tweets as they are posted to Twitter. Every new tweet will be passed into the block below in the variable `tweet`.
+Every new tweet will be passed into the block below in the variable `tweet`.
+Then machine learning, provided by [MachineBox](https://hub.asyncy.com/s/machinebox), will determine if the tone of the tweet's message is good or bad. The streaming service will wait for new tweets until the story is ended.
 
 
 ## Importing
 
-```coffeescript
-import GetUser from 'subfolder/users'
+```coffeescript{1}
+import GetUser from 'utils/users'
 # Call the function "get" which is defined in the Storyscript
 res = GetUser key:value
 ```
