@@ -304,6 +304,41 @@ list_multiline = [
 ]
 ```
 
+### List Methods
+
+```python
+['a', 'b', 'c'] length
+# 3
+
+['a', 'b', 'c'] join ':'
+# a:b:c
+
+['a', 'b', 'c'] reverse
+# ['c', 'b', 'a']
+
+['a', 'b', 'c'] shift 'left'
+# a
+# the list becomes ['b', 'c']
+
+['a', 'b', 'c'] index 'b'
+# 1
+
+['1', '2', '3'] apply int
+# [1, 2, 3]
+
+['a', 'b', 'c'] random
+# c
+
+['a', 'c', 'b'] sort
+# ['a', 'b', 'c']
+
+myList = [1, 2, 3]
+[(myList min), (myList max), (myList sum), (myList reduce)]
+# [1, 3, 6, -4]
+# also try: average, mean, mode
+```
+
+Join a couple method in one line. `((('123' split) apply int) sum) == 6`
 
 ## Date, Internals and Ranges
 
@@ -332,32 +367,6 @@ range days round:'down' # number of days within the range
 # round: down, nearest, up
 ```
 
-
-### List Methods
-
-```python
-['a', 'b', 'c'] length
-# 3
-
-['a', 'b', 'c'] join by:','
-# a,b,c
-
-['a', 'b', 'c'] reverse
-# ['c', 'b', 'a']
-
-['a', 'b', 'c'] shift from:'left'
-# a
-# the list becomes ['b', 'c']
-
-['a', 'b', 'c'] index of:'b'
-# 1
-
-['1', '2', '3'] apply Int
-# [1, 2, 3]
-
-['a', 'b', 'c'] random
-# c
-```
 
 ## Objects
 
