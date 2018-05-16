@@ -82,13 +82,13 @@ pattern = /^foobar/
 # true
 
 # Files
-myFile = File '/folder/hello.txt'
+myFile = file '/folder/hello.txt'
 myFile read
 # Hello world
 
 # Date
-birthday = Date year:2018 month:1 day:1
-tomorrow = (Date now) + (Interval days:1)
+birthday = date year:2018 month:1 day:1
+tomorrow = (date now) + (interval days:1)
 
 # Null
 empty = null
@@ -112,7 +112,7 @@ while foobar
 output = service cmd key:value
 
 # Functions
-function walk distance:Number -> someOutput:Sting
+function walk distance:number -> someOutput:sting
     # ...
     return "Ok, walked {{distance}}km!"
 
@@ -264,10 +264,10 @@ list_multiline = [
 ## Date, Internals and Ranges
 
 ```coffeescript
-birthday = Date year:2018 month:1 day:2
-tomorrow = (Date now) + (Interval days:1)
+birthday = date year:2018 month:1 day:2
+tomorrow = (date now) + (interval days:1)
 
-range = Range from:(Date now) to:tomorrow
+range = Range from:(date now) to:tomorrow
 ```
 
 ### Date Methods
@@ -284,7 +284,7 @@ bday format 'YYYY-mm-dd'
 
 ```coffeescript
 range days round:'down' # number of days within the range
-# year, months, days, hours, minutes, seconds
+# also try: year, months, days, hours, minutes, seconds
 # round: down, nearest, up
 ```
 
@@ -420,7 +420,7 @@ Loops have reserved keywords for ending and continuing loops.
 ## Functions
 
 ```coffeescript
-function getUser id:Int -> user:Object
+function getUser id:int -> user:object
     someone = (sql query:'select * from users where id={{id}} limit 1;')[0]
     someone.contact = fullcontact person email:someone.email
     return someone
@@ -572,7 +572,7 @@ pattern find in:myString
 Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
 
 ```coffeescript
-myFile = (File '/folder/hello.txt')
+myFile = (file '/folder/hello.txt')
 myFile write 'Hello World'
 myFile read
 # Hello World
@@ -614,7 +614,7 @@ Asyncy has built-in delays that can be applied seamlessly in Storyscript.
 wait days:5 hours:2
     # do this in 5 days and 2 hours
 
-wait date:((Date now) + (Interval day:1))
+wait date:((date now) + (interval day:1))
     # Hello, Tomorrow!
 
 cron hour:9
@@ -627,54 +627,54 @@ The wait and cron are a special service that use Asyncy internal scheduler.
 
 ```coffeescript
 1 type
-# Int
+# int
 
 true type
-# Bool
+# bool
 
 "" type
-# String
+# string
 
 [] type
-# List
+# list
 
 {} type
-# Object
+# object
 
 null type
-# Null
+# null
 
-(Date now) type
-# Date
+(date now) type
+# date
 
-(Interval days:1) type
-# Interval
+(interval days:1) type
+# interval
 
-(Range from:foo to:bar) type
-# Range
+(range from:foo to:bar) type
+# range
 
 /^foobar/ type
-# Regexp
+# regexp
 
 function foobar ->
 
 foobar type
-# Function
+# function
 ```
 
 Use the method `type` to get the type of a variable as a sting.
 
 ```coffeescript
-(1 is Int) and (true is Bool) and ("" is String)
+(1 is Int) and (true is Bool) and ("" is string)
 # true
 
-([] is List) and ({} is Object)
+([] is List) and ({} is object)
 # true
 
-(1 is Number) and (1.2 is Number)
+(1 is number) and (1.2 is number)
 # true
 
-{} is String
+{} is string
 # false
 ```
 
