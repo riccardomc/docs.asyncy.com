@@ -112,7 +112,7 @@ while foobar
 output = service cmd key:value
 
 # Functions
-function walk distance:number -> someOutput:sting
+function walk distance:Number -> someOutput:Sting
     # ...
     return "Ok, walked {{distance}}km!"
 
@@ -308,7 +308,7 @@ range days round:'down' # number of days within the range
 ['a', 'b', 'c'] index of:'b'
 # 1
 
-['1', '2', '3'] apply function:Int
+['1', '2', '3'] apply Int
 # [1, 2, 3]
 
 ['a', 'b', 'c'] random
@@ -420,7 +420,7 @@ Loops have reserved keywords for ending and continuing loops.
 ## Functions
 
 ```coffeescript
-function getUser id:int -> user:object
+function getUser id:Int -> user:Object
     someone = (sql query:'select * from users where id={{id}} limit 1;')[0]
     someone.contact = fullcontact person email:someone.email
     return someone
