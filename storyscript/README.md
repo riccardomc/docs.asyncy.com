@@ -152,35 +152,11 @@ Same level parentheses MAY be called at the same time which done by parallel pro
 
 First set of parentheses when assigning variables is optional. E.g., `a = myList length` is the same as `a = (myList length)`.
 
-### Assignments
-
-```coffeescript
-n = 5
-new = (n = n - 1)
-# 4
-n == new
-# true
-```
-
-Assigning variables WILL output the resulting value of that variable.
-
 ### Mutations
-```coffeescript
-myString = 'abc'
-myString replace 'a' with:'b'
-# Zbc
-myString
-# abc
-```
 
-Variables CANNOT be mutated by type methods. You must reassign variables when calling type methods.
-
-```coffeescript
-myString = (myString replace 'a' with:'b')
-# abc
-myString
-# abc
-```
+[ TODO ]
+array append will mutate
+string replace wont
 
 
 ## Strings
@@ -224,13 +200,13 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 "abc" length
 # 3
 
-"abc" replace before:'b' after:'Z'
+"abc" replace 'b' with:'Z'
 # aZc
 
 "foo bar" capitalize
 # Foo Bar
 
-"foo bar" capitalize first:1
+"foo bar" capitalize words:1
 # Foo bar
 
 "a,b,c" split ','
@@ -261,6 +237,12 @@ number = 1.2
 
 -1 absolute
 # 1
+
+1 decrement
+# 0
+
+1 increment
+# 2
 ```
 
 
@@ -437,7 +419,7 @@ Accessing list index or object keys is handled automatically.
 
 ```coffeescript
 n = 5
-res = while (n = n - 1) as i
+res = while (n decrement) as i
   yield i
 # res = [4, 3, 2, 1]
 ```
@@ -661,6 +643,9 @@ wait date:((date now) + (interval day:1))
 
 cron hour:9
     # daily at 9am do this...
+
+cron '* * * * 9'
+    # daily at 9am do this...
 ```
 
 The wait and cron are a special service that use Asyncy internal scheduler.
@@ -707,10 +692,10 @@ foobar type
 Use the method `type` to get the type of a variable as a sting.
 
 ```coffeescript
-(1 is Int) and (true is Bool) and ("" is string)
+(1 is int) and (true is bool) and ("" is string)
 # true
 
-([] is List) and ({} is object)
+([] is list) and ({} is object)
 # true
 
 (1 is number) and (1.2 is number)
