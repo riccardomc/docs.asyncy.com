@@ -138,6 +138,50 @@ catch as error
   raise  # bubble it up
 ```
 
+## Semantics
+
+### Procedure
+
+```coffeescript
+output = doThird foo:(doSecond (doFirst ...)) bar:(doSecond ...)
+```
+
+Parentheses MUST be used to produce inline procedures. The innermost Parentheses will be executed first moving out to the outermost.
+
+Same level parentheses MAY be called at the same time which done by parallel processing in new threads.
+
+First set of parentheses when assigning variables is optional. E.g., `a = myList length` is the same as `a = (myList length)`.
+
+### Assignments
+
+```coffeescript
+n = 5
+new = (n = n - 1)
+# 4
+n == new
+# true
+```
+
+Assigning variables WILL output the resulting value of that variable.
+
+### Mutations
+```coffeescript
+myString = 'abc'
+myString replace 'a' with:'b'
+# Zbc
+myString
+# abc
+```
+
+Variables CANNOT be mutated by type methods. You must reassign variables when calling type methods.
+
+```coffeescript
+myString = (myString replace 'a' with:'b')
+# abc
+myString
+# abc
+```
+
 
 ## Strings
 
