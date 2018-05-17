@@ -641,7 +641,7 @@ wait days:5 hours:2
 wait date:((date now) + (interval day:1))
     # Hello, Tomorrow!
 
-cron hour:9
+every hour:9
     # daily at 9am do this...
 
 cron '* * * * 9'
