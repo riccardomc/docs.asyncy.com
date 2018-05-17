@@ -3,6 +3,10 @@ module.exports = {
   description: 'Microservice choreography as a platform.',
   ga: 'UA-111475156-5',
   themeConfig: {
+    algolia: {
+      apiKey: 'daa25e161a8e69d7649ae46784fa45d5',
+      indexName: 'asyncy'
+    },
     repo: 'asyncy/docs.asyncy.com',
     repoLabel: 'Edit in GitHub',
     editLinks: true,
