@@ -154,9 +154,22 @@ First set of parentheses when assigning variables is optional. E.g., `a = myList
 
 ### Mutations
 
-[ TODO ]
-array append will mutate
-string replace wont
+```coffeescript
+myList = []
+myLlist append 1  # mutates myList by appending the new item
+(myList == [1])
+# true
+
+myString = 'abc'
+myString replace 'a' with:'Z'  # does not mutate the original string
+# Zbc
+myString
+# abc
+```
+
+A variable MAY be mutated by it's type methods.
+
+The comment, `Mutating Methods`, is added to examples below that identify methods as mutating the variable.
 
 
 ## Strings
@@ -238,11 +251,14 @@ number = 1.2
 -1 absolute
 # 1
 
-1 decrement
+# Mutating Methods
+
+n = 1
+n decrement
 # 0
 
-1 increment
-# 2
+n increment
+# 1
 ```
 
 
@@ -292,6 +308,14 @@ list_multiline = [
 ['a', 'b', 'c'] join ':'
 # a:b:c
 
+['a', 'b', 'c'] index 'b'
+# 1
+
+['a', 'b', 'c'] random
+# c
+
+# Mutating Methods
+
 ['a', 'b', 'c'] reverse
 # ['c', 'b', 'a']
 
@@ -299,14 +323,8 @@ list_multiline = [
 # a
 # the list becomes ['b', 'c']
 
-['a', 'b', 'c'] index 'b'
-# 1
-
 ['1', '2', '3'] apply int
 # [1, 2, 3]
-
-['a', 'b', 'c'] random
-# c
 
 ['a', 'c', 'b'] sort
 # ['a', 'b', 'c']
@@ -372,8 +390,10 @@ object_multiline = {
 {'a': 1, 'b': 2} items
 # [['a', 1], ['b', 2]]
 
+# Mutating Methods
+
 obj = {'a': 1, 'b': 2}
-obj pop key:'a'
+obj pop 'a'
 # 1
 obj
 # {'b': 2}
