@@ -4,6 +4,7 @@ Storyscript is a syntax-light high-level programming language that **orchestrate
 Application logic is expressive and transparent by requiring **named arguments** in all functions and microservices.
 Built-in **service discovery** provides a powerful environment for finding services and autocomplete to assist with inputs and outputs.
 
+# Table of Contents
 [[toc]]
 
 ## Why Storyscript

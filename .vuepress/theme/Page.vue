@@ -7,9 +7,6 @@
         <OutboundLink/>
       </span>
       <span class="link-container">
-        <a href="mailto:support@asyncy.com">Get support</a>
-      </span>
-      <span class="link-container">
         <a class="item typeform-share button" href="https://asyncy.typeform.com/to/deaLvw" data-mode="popup" data-hide-headers="true" data-hide-footer="true" target="_blank">Give Feedback</a>
       </span>
     </div>

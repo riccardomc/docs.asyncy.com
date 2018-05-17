@@ -1,3 +1,21 @@
+---
+home: true
+actionText: Quick Start →
+actionLink: /quick-start/
+features:
+- title: Storyscript
+  details: The DSL for microservice choreography. Removing the unnecessary complexity and focusing on application goals.
+- title: Open Source
+  details: 100% open source, every bit and byte. Join our growing community and help shape the Asyncy Platform.
+- title: Microservice Platform
+  details: A stack packed with industry standard tooling designed for microservice architecture out-of-the-box.
+footer: MIT Licensed
+---
+
+::: tip Alpha Stage
+Asyncy is in private Alpha. To join please fill out [this form](https://asyncy.click/beta-invite).
+:::
+
 # Getting Started
 
 To get you started, you might find some of these links relevant:
