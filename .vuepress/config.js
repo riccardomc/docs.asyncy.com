@@ -7,6 +7,7 @@ module.exports = {
       apiKey: 'daa25e161a8e69d7649ae46784fa45d5',
       indexName: 'asyncy'
     },
+    lastUpdated: 'Last Updated',
     repo: 'asyncy/docs.asyncy.com',
     repoLabel: 'Edit in GitHub',
     editLinks: true,
