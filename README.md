@@ -12,26 +12,26 @@ features:
 footer: MIT Licensed
 ---
 
-::: tip Alpha Stage
-Asyncy is in private Alpha. To join please fill out [this form](https://asyncy.click/beta-invite).
-:::
-
 # Getting Started
 
 To get you started, you might find some of these links relevant:
 
 - New to Asyncy? Welcome :smile: Have a look at our [Platform](#platform) below then proceed to [Quick Start](/quick-start/).
-- No account yet? You can sign up for one at [asyncy.com](https://asyncy.com).
-- Stuck? Feel free to contact [Support](/support/).
-- Installing Asyncy Platform yourself? See [Installation](/alpha/).
+<!-- - No account yet? You can sign up for one at [asyncy.com](https://asyncy.com). -->
+<!-- - Stuck? Feel free to contact [Support](/support/). -->
+<!-- - Installing Asyncy Platform yourself? See [Installation](/alpha/). -->
 
 # Platform
 
 The Asyncy Platform is made up of various components that provide a production-ready, scallable microservice environment out-of-the-box.
 
 - Review the Asyncy Platform at [asyncy.com/platform](https://asyncy.com/platform).
-- Review our [Architecture Diagrams](/diagrams/).
-- Examples of Asyncy applications can be found at [examples.asyncy.com](http://examples.asyncy.com).
+<!-- - Review our [Architecture Diagrams](/diagrams/). -->
+<!-- - Examples of Asyncy applications can be found at [examples.asyncy.com](http://examples.asyncy.com). -->
+
+::: warning Beta
+Asyncy is in private Beta. To join please fill out [this form](https://asyncy.click/beta-invite).
+:::
 
 ::: tip Next
 Once you have an understanding of the platform offering head over to [Quick Start](/quick-start/).
