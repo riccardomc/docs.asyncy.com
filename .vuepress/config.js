@@ -12,10 +12,15 @@ module.exports = {
     repoLabel: 'Edit in GitHub',
     editLinks: true,
     nav: [
-      { text: 'Platform', link: 'https://asyncy.com/platform' },
-      { text: 'Blog', link: 'https://medium.com/asyncy' },
-      { text: 'App', link: 'https://app.asyncy.com' },
-      { text: 'Hub', link: 'https://hub.asyncy.com' }
+      {
+        text: 'More',
+        items: [
+          { text: 'Platform Overview', link: 'https://asyncy.com/platform' },
+          { text: 'Blog', link: 'https://medium.com/asyncy' },
+          { text: 'Asyncy App', link: 'https://app.asyncy.com' },
+          { text: 'Asyncy Hub', link: 'https://hub.asyncy.com' }
+        ]
+      }
     ],
     sidebar: [
       '/quick-start/',
