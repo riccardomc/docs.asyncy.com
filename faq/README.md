@@ -2,38 +2,42 @@
 
 [[toc]]
 
-## Product
+## General
 
-Questions pertaining to the Asyncy product suite.
+### What are microservices?
 
-### Is Asyncy a serverless environment?
+Microservices are service-oriented self-contained applications that are highly specialized and reusable services.
+These services can be algorithms, APIs or specialized functions. In Asyncy world, it's anything you can wrap in a Docker container. Services are independently deployable, scalable and manage their own metrics, logs and other operations.
 
-**Yes**, Asyncy is a serverless execution environment. The Asyncy Platform provides an HTTP gateway which executes Storyscript in a serverless fashion. Storyscripts register with the gateway, therefore do not have an active http server.
+> <small>Next: [Microservice.guide](http://microservice.guide/) &mdash; the open standard for designing microservices.</small>
 
-### Is Asyncy a Paas, Baas, or Faas?
+### Who maintains the microservices?
 
-Asyncy is a **Platform as a Service** (aka PaaS) which has some functionality of Backend as a Service (BaaS) and Functions as a Service (Faas). Asyncy's Engine is our BaaS and custom code can as in a FaaS.
+The project contributors maintain the service. This may be open-source projects, vendor built projects, or private projects.
 
-### Does Asyncy use Kubernetes under-the-hood?
+For example, a Twitter library written in Python can be built in a Docker container and deployed on Asyncy in minutes. The Twitter library is already maintained by the contributors, there is very little extra work to make the service compatible in Asyncy.
 
-**Yes**, Kubernetes is used to orchestrate containers. See the full [Asyncy Stack](https://asyncy.com/platform#stack).
+### How difficult is it to build my own microservices?
 
-### How are short container names (aka aliases) handled?
+Use any programming language necessary to build your service just like you would a library, package, or application. Learn more about [Building Services](/services/#containers-via-docker).
 
-Services must be registered with the Asyncy Hub to operate on Asyncy. A service may specify aliases which are short title of the service (`twitter/asyncy-twitter-service` can choose `twitter` as an alias). Aliases are **not unique** to a service.
+## Storyscript
 
-During the service discovery phase developers will select certain services which end up getting tracked in the `asyncy.yml` file.
+### Why use a DSL (domain-specific language)?
 
-```yaml{3,4}
-# asyncy.yml
-services:
-  twitter:
-    image: twitter/asyncy-twitter-service:v1.123
-```
+The top reasons are identity, knowledge, control, and data flow design.
+For a full description, continue to our blog post below.
 
-### How are services managed?
+> <small>Next: [Meet Storyscript &rarr;](https://medium.com/asyncy)</small>
 
-When the Application is deployed all containers are pulled, started and scaled intelligently. Asyncy monitors service metrics, scales dynamically and load-balances between nodes automatically.
+### What is Storyscript used for?
+
+Storyscript has many use cases. Below are a couple high-level topics.
+
+1. Application Backend (not frontend i.e, replacing HTML, CSS and JavaScript)
+1. BPM (Business Process Management)
+1. Workflows
+1. Automation (event reactions, monitoring, alerting, etc.)
 
 ### How are Storyscripts started?
 
@@ -51,26 +55,19 @@ Storyscripts can start in many ways, here are just a couple examples:
 1. Text message or phone call
 1. Another 3rd party application
 
-### Is Asyncy used for prototypes only?
 
-**No**, the Asyncy Platform is a dynamically-scalable, robust, production-grade platform. It can also be used for on-premise deployments.
+### How are short container names (aka aliases) handled?
 
-### What is Storyscript used for?
+Services must be registered with the Asyncy Hub to operate on Asyncy. A service may specify aliases which are short title of the service (`twitter/asyncy-twitter-service` can choose `twitter` as an alias). Aliases are **not unique** to a service.
 
-Storyscript has many use cases. Below are a couple high-level topics.
+During the service discovery phase developers will select certain services which end up getting tracked in the `asyncy.yml` file.
 
-1. Application Backend (not frontend i.e, replacing HTML, CSS and JavaScript)
-1. BPM (Business Process Management)
-1. Workflows
-1. Automation (event reactions, monitoring, alerting, etc.)
-
-### Does Asyncy provide file storage?
-
-**Yes**. Applications have a temporary volume that contains the applications repository source code and can be a temporary file storage. Applications may optionally have persistent storage which is flexible based on the application or service needs.
-
-### Does the Asyncy Platform come with a persistent database?
-
-**No**, databases are unfortunately not on-size-fits-all. Yet, it's quite simple to create persistent database or user a database backed by the cloud provider.
+```yaml{3,4}
+# asyncy.yml
+services:
+  twitter:
+    image: twitter/asyncy-twitter-service:v1.123
+```
 
 ### Can Storyscript run asynchronously?
 
@@ -90,11 +87,51 @@ Storyscript is compiled to an logic-tree which is stored in the deployment slug 
 
 This is the current strategy through Beta and may change.
 
-### What are the benchmarks of using Asyncy and Storyscript?
+## Asyncy
 
-Coming soon.
+Questions pertaining to the Asyncy Platform.
 
-## Service
+### Is Asyncy a serverless environment?
+
+**Yes**, Asyncy is a serverless execution environment. The Asyncy Platform provides an HTTP gateway which executes Storyscript in a serverless fashion. Storyscripts register with the gateway, therefore do not have an active http server.
+
+### Is Asyncy a Paas, Baas, or Faas?
+
+Asyncy is a **Platform as a Service** (aka PaaS) which has some functionality of Backend as a Service (BaaS) and Functions as a Service (Faas). Asyncy's Engine is our BaaS and custom code can as in a FaaS.
+
+### Does Asyncy use Kubernetes under-the-hood?
+
+**Yes**, Kubernetes is used to orchestrate containers. See the full [Asyncy Stack](https://asyncy.com/platform#stack).
+
+### How much Kubernetes or devops experience is required?
+
+Little to none. Asyncy interacts with Kubernetes so you don't need to. It manages scaling, security, routing, networks and much more.
+
+### Where are Storyscript's and other code stored?
+
+Deployments to Asyncy **must** be git-backed. When deploying source code to Asyncy it will clone the repository and generate a release slug which is used in the platform for deployments.
+
+### How are services managed?
+
+When the Application is deployed all containers are pulled, started and scaled intelligently. Asyncy monitors service metrics, scales dynamically and load-balances between nodes automatically.
+
+### Is Asyncy used for prototypes only?
+
+**No**, the Asyncy Platform is a dynamically-scalable, robust, production-grade platform. It can also be used for on-premise deployments.
+
+
+### Does Asyncy provide file storage?
+
+**Yes**. Applications have a temporary volume that contains the applications repository source code and can be a temporary file storage. Applications may optionally have persistent storage which is flexible based on the application or service needs.
+
+### Does the Asyncy Platform come with a persistent database?
+
+**No**, databases are unfortunately not on-size-fits-all. Yet, it's quite simple to create persistent database or user a database backed by the cloud provider.
+
+
+### Can I bring my own database?
+
+**Yes***. We recommend using the cloud providers database, such as Google Cloud SQL or AWS RDS. But you can run and managing your own database on the Asyncy Platform.
 
 ### Can I run Asyncy on my own cloud?
 
