@@ -27,15 +27,15 @@ module.exports = {
           '/services/',
         ]
       },
-      // {
-      //   title: 'Development',
-      //   collapsable: false,
-      //   children: [
-      //     '/cli/',
-      //     '/plugins/',
-      //     '/testing/'
-      //   ]
-      // },
+      {
+        title: 'Developer Tools',
+        collapsable: false,
+        children: [
+          '/cli/',
+          '/plugins/',
+          // '/testing/'
+        ]
+      },
       // {
       //   title: 'Deploying',
       //   collapsable: false,
@@ -45,20 +45,20 @@ module.exports = {
       //     '/kubernetes/',
       //   ]
       // },
-      // {
-      //   title: 'User Interfaces',
-      //   children: [
-      //     '/app/',
-      //     '/hub/',
-      //   ]
-      // },
-      // {
-      //   title: 'API',
-      //   children: [
-      //     '/rest-api/',
-      //     '/graphql/',
-      //   ]
-      // },
+      {
+        title: 'Frontends',
+        children: [
+          '/app/',
+          '/hub/',
+        ]
+      },
+      {
+        title: 'API',
+        children: [
+          '/rest-api/',
+          '/graphql/',
+        ]
+      },
       // {
       //   title: 'Diagrams',
       //   children: [
