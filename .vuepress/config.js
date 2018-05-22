@@ -27,6 +27,7 @@ module.exports = {
       '/faq/',
       {
         title: 'Building Applications',
+        collapsable: false,
         children: [
           '/storyscript/',
           '/services/',
@@ -34,35 +35,38 @@ module.exports = {
       },
       {
         title: 'Developer Tools',
+        collapsable: false,
         children: [
           '/cli/',
-          '/plugins/',
+          // '/plugins/',
           // '/testing/'
         ]
       },
+      {
+        title: 'Deploying',
+        collapsable: false,
+        children: [
+          '/alpha/',
+          // '/asyncy_cloud/',
+          // '/kubernetes/',
+        ]
+      },
       // {
-      //   title: 'Deploying',
+      //   title: 'Frontends',
       //   collapsable: false,
       //   children: [
-      //     '/alpha/',
-      //     '/asyncy_cloud/',
-      //     '/kubernetes/',
+      //     '/app/',
+      //     '/hub/',
       //   ]
       // },
-      {
-        title: 'Frontends',
-        children: [
-          '/app/',
-          '/hub/',
-        ]
-      },
-      {
-        title: 'API',
-        children: [
-          '/rest-api/',
-          '/graphql/',
-        ]
-      },
+      // {
+      //   title: 'API',
+      //   collapsable: false,
+      //   children: [
+      //     '/rest-api/',
+      //     '/graphql/',
+      //   ]
+      // },
       '/support/',
       '/diagrams/'
     ]

@@ -59,28 +59,28 @@ Now the Story is listening to http traffic making requests to `yourdomain.com/`.
 Client makes a request which executes the block under the `http-endpoint`.
 
 ```
-                                  +----------+        +-----------+     +----------+
-                                  |          |        |           |     |          |
-                                  |  Engine  |        |  Gateway  |     |  Client  |
-                                  |          |        |           |     |          |
-                                  +----+-----+        +-----+-----+     +----+-----+
-                                       |                    |                |
-+--------------------------------------|                    |                |
-|                                      |                    | <------------- | GET /
-| http-endpoint path:'/' as req, res   | <----------------- |                |
-|     ...                            +-|                    |                |
-|                                    | |                    |                |
-|     res write data:'Hello world!'  | | -----------------> |                |
-|                                    | |                    | -------------> | Hello world!
-|     res finish                     | | -----------------> |                |
-|                                    | |                    | -------------X | EOF
-|     ...                            | |                    |                |
-|                                    | |                    |                |
-| log 'something'                    | |                    |                |
-|                                    | |                    |                |
-+------------------------------------+ |                    |                |
-                                       |                    |                |
-                                       |                    |                |
+         +----------+     +-----------+      +----------+
+         |          |     |           |      |          |
+         |  Client  |     |  Gateway  |      |  Engine  |
+         |          |     |           |      |          |
+         +----+-----+     +-----+-----+      +----+-----+
+              |                 |                 |
+              |                 |                 +-------------------------------------+
+        GET / | --------------> |                 |                                     |
+              |                 | --------------> |  http-endpoint path:'/' as req, res |
+              |                 |                 +|     ...                            |
+              |                 |                 ||                                    |
+              |                 | <-------------- ||     res write data:'Hello world!'  |
+ Hello world! | <-------------- |                 ||                                    |
+              |                 | <-------------- ||     res finish                     |
+          EOF | X-------------- |                 ||                                    |
+              |                 |                 ||     ...                            |
+              |                 |                 ||                                    |
+              |                 |                 || log 'something'                    |
+              |                 |                 ||                                    |
+              |                 |                 +-------------------------------------+
+              |                 |                 |
+              |                 |                 |
 ```
 
 The proceeding lines after `res finish` occurs asynchronously from the client perspective.
