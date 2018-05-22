@@ -24,9 +24,9 @@ module.exports = {
     ],
     sidebar: [
       '/quick-start/',
+      '/faq/',
       {
         title: 'Building Applications',
-        collapsable: false,
         children: [
           '/storyscript/',
           '/services/',
@@ -34,7 +34,6 @@ module.exports = {
       },
       {
         title: 'Developer Tools',
-        collapsable: false,
         children: [
           '/cli/',
           '/plugins/',
@@ -64,13 +63,8 @@ module.exports = {
           '/graphql/',
         ]
       },
-      // {
-      //   title: 'Diagrams',
-      //   children: [
-      //   ]
-      // },
-      '/faq/',
-      '/support/'
+      '/support/',
+      '/diagrams/'
     ]
   }
 }
