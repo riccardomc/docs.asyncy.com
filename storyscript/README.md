@@ -497,6 +497,14 @@ In Storyscript, the syntax to run a service appears natural and arguments are na
 
 These services may be Docker containers that expose commands and define their interface. More details in [Finding and Building Services](/services/)
 
+```coffeescript
+tweet = "hello"
+twitter tweet message:tweet
+# would result in ```twitter tweet message:"hello"```
+```
+
+Containers, commands and argument names are **static grammar** and **interpreted literally**.
+
 ## Streaming Service
 
 Services may stream data and the output is submitted back to Storyscript.
