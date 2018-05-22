@@ -128,18 +128,4 @@ export default {
   .nav-links a
     &:hover, &.router-link-active
       color $headerLinkHoverColor
-  .nav-item
-    &:before
-      content ""
-      position absolute
-      width 100%
-      height 2px
-      bottom -1px
-      background-color $headerLinkHoverUnderlineColor
-      visibility hidden
-      transform scaleX(0)
-      transition all 0.15s ease-out 0s
-    &:hover:before
-      visibility visible
-      transform scaleX(1)
 </style>

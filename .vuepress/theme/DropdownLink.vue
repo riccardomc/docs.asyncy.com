@@ -65,7 +65,7 @@ export default {
   .nav-dropdown
     .dropdown-item
       color inherit
-      line-height 1.7rem
+      line-height 2.2rem
       h4
         margin 0.45rem 0 0
         border-top 1px solid #eee
@@ -84,7 +84,7 @@ export default {
         margin-bottom 0
         padding 0 1.5rem 0 1.25rem
         &:hover
-          color $accentColor
+          color #EFEFEF
         &.router-link-active
           color $accentColor
           &::after
@@ -143,10 +143,9 @@ export default {
       position absolute
       top 100%
       right 0
-      background-color #fff
+      background-color #363636
       padding 0.6rem 0
-      border 1px solid #ddd
-      border-bottom-color #ccc
+      border 1px solid #363636
       text-align left
       border-radius 0.25rem
       white-space nowrap

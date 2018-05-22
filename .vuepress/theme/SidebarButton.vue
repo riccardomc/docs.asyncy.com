@@ -15,7 +15,7 @@
   height 1.5rem
   position absolute
   padding 0.6rem
-  top 1.2rem
+  top 0.8rem
   left 1rem
   .icon
     display block
