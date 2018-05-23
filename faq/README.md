@@ -163,7 +163,7 @@ Asyncy offers a variety of support options ranging from community support to pre
 
 We offer SLA contracts with our premium support license. More details will arrive after Beta.
 
-## What are the vendor lock-in risks?
+### What are the vendor lock-in risks?
 
 All technology has a level of vendor lock-in, it's unavoidable. Asyncy is focused at building an open platform to reduce vendor lock-in concerns as much as possible. Our core mission depends on our ability to reduce vendor lock-in.
 
