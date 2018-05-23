@@ -162,3 +162,13 @@ Asyncy offers a variety of support options ranging from community support to pre
 ### Does Asyncy have a Service Level Agreement (SLA)?
 
 We offer SLA contracts with our premium support license. More details will arrive after Beta.
+
+## What are the vendor lock-in risks?
+
+All technology has a level of vendor lock-in, it's unavoidable. Asyncy is focused at building an open platform to reduce vendor lock-in concerns as much as possible. Our core mission depends on our ability to reduce vendor lock-in.
+
+1. **Open Source** -- Asyncy is 100% open sourced under various licenses that provide transparency and portability to on-premise commercial applications.
+2. **Open Standards** -- The microservices used by Asyncy are designed in a platform-agnostic way using the principles and guidelines outlined in the [Microservice.Guide](https://microservice.guide).
+3. **Platform-Agnostic Language** -- Storyscript is MIT licensed and designed to be highly portable and platform-agnostic. A vendor could use the output of Storyscript to build their own platform.
+
+Please contact [legal@asyncy.com](mailto:legal@asyncy.com) for questions and concerns.
