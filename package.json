@@ -2,6 +2,7 @@
   "name": "docs.asyncy.com",
   "version": "1.0.0",
   "description": "Docs for Asyncy",
+  "license": "AGPL v3",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev",
