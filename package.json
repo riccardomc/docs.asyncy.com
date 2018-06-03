@@ -1,6 +1,6 @@
 {
   "name": "docs.asyncy.com",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Docs for Asyncy",
   "license": "AGPL v3",
   "main": "index.js",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/asyncy/docs.asyncy.com/issues"
   },
-  "homepage": "https://github.com/asyncy/docs.asyncy.com#readme",
+  "homepage": "https://asyncy.com",
   "devDependencies": {
     "vuepress": "0.10.0"
   }

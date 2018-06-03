@@ -1,13 +1,17 @@
 # Support
 
-| Community Forum |  FAQ  | Asyncy Cloud Status |
-| :-----------: | :---: | :-----------------: |
-| QA, community support and feature requests | Frequently Asked Questions | System health, metrics and issues | Issue tracking |
-| [forum.asyncy.com](https://forum.asyncy.com) | [FAQ](https://forum.asyncy.com/c/faq) | [status.asyncy.com](https://status.asyncy.com) |
+<!--
+
+| Community Forum |  Asyncy Cloud Status |
+| :-----------: | :-----------------: |
+| QA, community support and feature requests | System health, metrics and issues | Issue tracking |
+| [forum.asyncy.com](https://forum.asyncy.com) | [status.asyncy.com](https://status.asyncy.com) |
 
 ::: tip Need help?
 Please search our [Community Forum](https://forum.asyncy.com) for help or ask a new question.
 :::
+
+-->
 
 ## Feedback
 
