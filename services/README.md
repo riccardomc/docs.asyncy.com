@@ -1,7 +1,5 @@
 # Finding and Building Services
 
-Asyncy supports two types of services.
-
 [[toc]]
 
 
@@ -15,11 +13,6 @@ This registry acts as the Asyncy library when compared to traditional programmin
 ## Containers via Docker
 
 Asyncy proudly supports the **Microservice.Guide** open standard for containerizing microservices using Docker. The documentation for this standard is found at [http://microservice.guide](https://microservice.guide).
-
-| Microservice.Guide |
-| :-----: |
-| [![Microservice Guide](https://avatars2.githubusercontent.com/u/39149433?s=300&v=4)](https://microservice.guide) |
-| [https://microservice.guide](https://microservice.guide) |
 
 
 ## Stories
