@@ -113,7 +113,7 @@ while foobar
 output = service cmd key:value
 
 # Functions
-function walk distance:number -> someOutput:sting
+function walk distance:number -> someOutput:string
     # ...
     return "Ok, walked {{distance}}km!"
 
@@ -718,7 +718,7 @@ foobar type
 # function
 ```
 
-Use the method `type` to get the type of a variable as a sting.
+Use the method `type` to get the type of a variable as a string.
 
 ```coffeescript
 (1 is int) and (true is bool) and ("" is string)
