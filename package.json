@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/asyncy/docs.asyncy.com#readme",
   "devDependencies": {
-    "vuepress": "github:vuejs/vuepress"
+    "vuepress": "0.10.0"
   }
 }
