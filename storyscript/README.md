@@ -125,7 +125,7 @@ myService cmd foo:(myString split by:',')
               bar:(myObject find key:(myList random))
 
 # import another story
-import MyFunction from 'folder/file'
+import 'folder/file' as MyFunction
 # Call a method in that story
 res = MyFunction key:value
 
@@ -600,9 +600,9 @@ Then machine learning, provided by [MachineBox](https://hub.asyncy.com/s/machine
 ## Importing
 
 ```coffeescript{1}
-import GetUser from 'utils/users'
+import 'utils/users' as Users
 # Call the function "get" which is defined in the Storyscript
-res = GetUser key:value
+res = Users.get key:value
 ```
 
 Import other Storyscripts by using the `import method from file` syntax.
@@ -612,6 +612,16 @@ The file path is **relative** to the Storyscript where the `import`. Use `/folde
 ::: tip
 The `.story` is optional. `/stories/users.story` is equivalent to `/stories/users`.
 :::
+
+```coffeescript
+# foo.story
+import 'bar' as Bar
+
+# bar.story
+import 'foo' as Foo
+```
+
+Stories MAY recursively import other stories, as seen above.
 
 
 ## Operations
