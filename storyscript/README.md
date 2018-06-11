@@ -170,7 +170,76 @@ myString
 
 A variable MAY be mutated by it's type methods.
 
-The comment, `Mutating Methods`, is added to examples below that identify methods as mutating the variable.
+The comment, `Mutating Methods`, is added to examples below that identify methods as mutating the variable. This indicates a method that will mutate the variable and not requires reassignment.
+
+### Variable Scope
+
+Variables are global to the block and child blocks.
+
+```coffeescript
+n = 1
+
+every minutes:3
+  n increment
+  log n
+```
+
+```java
++0  INFO 2
++3m INFO 3
++6m INFO 4
+```
+
+### Compiling
+
+Storyscript is a dynamically compiled language. Type checking is performed at compile time, but not in a traditional way. From the perspective of the developer the following steps are performed during compile time.
+
+Compile time consists of four primary processes:
+
+1. **Linting** is performed to check syntax and grammar.
+1. **Translation** is performed which translates the Storyscripts into event-logic tree.
+1. **Dependancy** checks are performed to ensure command and arguments exists.
+1. **Type-Checking** is performed on the Stories the ensure data integrity.
+
+The type-checking includes the following checks:
+
+1. Type mutation method exists.
+2. Arguments are of the expected type.
+
+
+### Execution Model
+
+Storyscripts are executed by an interpretation engine (not compiled to C or Java).
+
+#### Deployment
+
+1. All dependancies are gathered and prepared for execution.
+1. The Asyncy Engine is prepared with the Stories as first-class assets for swift execution.
+1. Every Storyscript is executed allowing them to register with the gateway, cron, etc.
+
+#### Execution
+
+A story may [execute in many ways](/faq/#how-are-storyscripts-started).
+
+1. The Engine received notice to start a Story with or without starting arguments.
+1. The Story is executed in a single thread.
+1. When a service is called the Engine will communicate with the service passing necessary data to and from the service back into the primary thread.
+1. Asynchronous commands may generate new threads and execute in the same pattern above.
+
+```coffeescript
+foo = serviceA
+parts = foo split ','
+bar = serviceB name:parts[0]
+```
+
+The Story above is would perform the following operations:
+
+1. Interface with `serviceA`.
+1. Set `foo` to the results of `serviceA`.
+1. Perform `split` on `foo`.
+1. Set `parts` to the results of the mutation above.
+1. Interface with `serviceB` providing the argument `name` equal to the first item in `parts`.
+1. Set `bar` to the results of `serviceB`.
 
 
 ## Strings
@@ -679,7 +748,7 @@ cron '* * * * 9'
 
 The wait and cron are a special service that use Asyncy internal scheduler.
 
-## Type Checking
+## Types
 
 ```coffeescript
 1 type
