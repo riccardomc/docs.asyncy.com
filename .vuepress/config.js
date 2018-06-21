@@ -25,7 +25,7 @@ module.exports = {
     sidebar: [
       '/quick-start/',
       {
-        title: 'Building Applications',
+        title: 'Applications',
         collapsable: false,
         children: [
           '/storyscript/',
@@ -41,22 +41,6 @@ module.exports = {
           // '/testing/'
         ]
       },
-      // {
-      //   title: 'Deploying',
-      //   collapsable: false,
-      //   children: [
-      //     // '/asyncy_cloud/',
-      //     // '/kubernetes/',
-      //   ]
-      // },
-      // {
-      //   title: 'Frontends',
-      //   collapsable: false,
-      //   children: [
-      //     '/app/',
-      //     '/hub/',
-      //   ]
-      // },
       // {
       //   title: 'API',
       //   collapsable: false,

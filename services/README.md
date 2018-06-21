@@ -1,21 +1,13 @@
-# Finding and Building Services
+# Services
 
-[[toc]]
+Asyncy is a **microservice choreography platform** of highly specialised services that are independently scalable and deployable. Asyncy supports the [Open Microservice Guide](https://microservice.guide)'s implementation of microservice. These services are platform-agnostic and vendor-neutral.
 
+You can find hundreds of free and paid services in our Asyncy Hub or build your own service. All services must be submitted to the Asyncy Hub to work on Asyncy.
 
-## Community Services
+## Asyncy Hub
 
-The [Asyncy Hub](https://hub.asyncy.com) is a registry for community services that are free or subscription based.
-This registry acts as the Asyncy library when compared to traditional programming languages.
+The [Asyncy Hub](https://hub.asyncy.com) is a registry for services that can run in Asyncy.
 
-[ Search the Asyncy Hub ]
-
-## Containers via Docker
+## Open Microservice Guide
 
 Asyncy proudly supports the **Microservice.Guide** open standard for containerizing microservices using Docker. The documentation for this standard is found at [http://microservice.guide](https://microservice.guide).
-
-
-## Stories
-
-Developers may submit a set of Storyscript's that act as a reusable service.
-This is handled through the Asyncy Hub.

@@ -9,7 +9,7 @@
 Microservices are service-oriented self-contained applications that are highly specialized and reusable services.
 These services can be algorithms, APIs or specialized functions. In Asyncy world, it's anything you can wrap in a Docker container. Services are independently deployable, scalable and manage their own metrics, logs and other operations.
 
-> <small>Next: [Microservice.guide](http://microservice.guide/) &mdash; the open standard for designing microservices.</small>
+> <small>Next: [Open Microservice Guide](http://microservice.guide/) &mdash; the open guide and standard for implementation and design of microservices.</small>
 
 ### Who maintains the microservices?
 
@@ -66,7 +66,8 @@ During the service discovery phase developers will select certain services which
 # asyncy.yml
 services:
   twitter:
-    image: twitter/asyncy-twitter-service:v1.123
+    image: twitter/asyncy-twitter-service
+    tag: v1.123
 ```
 
 ### Can Storyscript run asynchronously?
@@ -168,7 +169,7 @@ We offer SLA contracts with our premium support license. More details will arriv
 All technology has a level of vendor lock-in, it's unavoidable. Asyncy is focused at building an open platform to reduce vendor lock-in concerns as much as possible. Our core mission depends on our ability to reduce vendor lock-in.
 
 1. **Open Source** -- Asyncy is 100% open sourced under various licenses that provide transparency and portability to on-premise commercial applications.
-2. **Open Standards** -- The microservices used by Asyncy are designed in a platform-agnostic way using the principles and guidelines outlined in the [Microservice.Guide](https://microservice.guide).
+2. **Open Standards** -- The microservices used by Asyncy are designed in a platform-agnostic way using the principles and guidelines outlined in the [Open Microservice Guide](https://microservice.guide).
 3. **Platform-Agnostic Language** -- Storyscript is MIT licensed and designed to be highly portable and platform-agnostic. A vendor could use the output of Storyscript to build their own platform.
 
 Please contact [legal@asyncy.com](mailto:legal@asyncy.com) for questions and concerns.

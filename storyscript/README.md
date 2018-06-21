@@ -577,7 +577,7 @@ service cmd key:value
 
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
 
-These services may be Docker containers that expose commands and define their interface. More details in [Finding and Building Services](/services/)
+These services may be Docker containers that expose commands and define their interface. More details in [Services](/services/)
 
 ```coffeescript
 tweet = "hello"

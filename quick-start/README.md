@@ -67,7 +67,7 @@ The story looks like this:
 
 ```coffeescript
 http-endpoint method:'get' path:'/' as request, response
-    response write 'Hello world'
+    response write 'Hello world!'
 ```
 
 Next, commit the changes. Anytime you change your stories you need to commit the changes in `git`.
