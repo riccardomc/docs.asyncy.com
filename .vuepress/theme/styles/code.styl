@@ -35,53 +35,18 @@
     margin 0 -1.5rem
     padding 0 1.5rem
 
-pre[class="language-js"], pre[class="language-javascript"]
-  &:before
-    content "js"
-
-pre[class="language-html"], pre[class="language-markup"]
-  &:before
-    content "html"
-
-pre[class="language-markdown"], pre[class="language-md"]
-  &:before
-    content "md"
-
-pre[class="language-vue"]:before
-  content "vue"
-
-pre[class="language-css"]:before
-  content "css"
-
-pre[class="language-sass"]:before
-  content "sass"
-
-pre[class="language-less"]:before
-  content "less"
-
-pre[class="language-scss"]:before
-  content "scss"
-
-pre[class="language-stylus"]:before
-  content "stylus"
-
 pre[class="language-json"]:before
   content "json"
 
-pre[class="language-ruby"]:before
-  content "rb"
-
-pre[class="language-python"]:before
-  content "py"
-
-pre[class="language-go"]:before
-  content "go"
-
-pre[class="language-java"]:before
-  content "java"
-
-pre[class="language-c"]:before
-  content "c"
-
 pre[class="language-bash"]:before
   content "sh"
+
+pre[class="language-coffeescript"]:before
+  content "storyscript"
+
+div.language-shell pre[class="language-text"]:before
+  content "sh"
+
+div.language-shell pre[class="language-text"] code:before
+  content '$ '
+  color #c351f9
