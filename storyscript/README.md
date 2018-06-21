@@ -261,7 +261,8 @@ The Story above is would perform the following operations:
 data = "foobar"
 
 long_string = "Hi Friend,
-This is a long string."
+This is a lo\
+ng string."
 # Hi Friend, This is a long string.
 
 more_data = """
@@ -433,7 +434,7 @@ range = Range from:(date now) to:tomorrow
 
 ```coffeescript
 [bday year, bday month, bday day, bday hour, bday minute, bday second]
-# [2018, 1, 1, 17, 32, 18]
+# [2018, 1, 2, 17, 32, 18]
 
 bday format 'YYYY-mm-dd'
 # 2018-01-02
