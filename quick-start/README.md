@@ -59,7 +59,7 @@ asyncy bootstrap
 Let's choose the http endpoint.
 
 ```shell
-asyncy bootstrap http-endpoint > hello.story
+asyncy bootstrap http > hello.story
 ```
 
 This will template out a story that registers with Asyncy Gateway.
