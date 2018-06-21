@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Asyncy',
-  description: 'Microservice choreography as a platform.',
+  title: 'Λ S N C Y',
+  description: 'Write smarter code.',
   ga: 'UA-111475156-5',
   themeConfig: {
     algolia: {
@@ -24,7 +24,6 @@ module.exports = {
     ],
     sidebar: [
       '/quick-start/',
-      '/faq/',
       {
         title: 'Building Applications',
         collapsable: false,
@@ -42,15 +41,14 @@ module.exports = {
           // '/testing/'
         ]
       },
-      {
-        title: 'Deploying',
-        collapsable: false,
-        children: [
-          '/alpha/',
-          // '/asyncy_cloud/',
-          // '/kubernetes/',
-        ]
-      },
+      // {
+      //   title: 'Deploying',
+      //   collapsable: false,
+      //   children: [
+      //     // '/asyncy_cloud/',
+      //     // '/kubernetes/',
+      //   ]
+      // },
       // {
       //   title: 'Frontends',
       //   collapsable: false,
@@ -67,6 +65,7 @@ module.exports = {
       //     '/graphql/',
       //   ]
       // },
+      '/faq/',
       '/support/',
       '/diagrams/'
     ]
