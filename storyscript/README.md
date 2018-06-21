@@ -261,7 +261,8 @@ The Story above is would perform the following operations:
 data = "foobar"
 
 long_string = "Hi Friend,
-This is a long string."
+This is a lo\
+ng string."
 # Hi Friend, This is a long string.
 
 more_data = """
