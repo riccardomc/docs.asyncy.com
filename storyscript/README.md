@@ -174,7 +174,7 @@ The comment, `Mutating Methods`, is added to examples below that identify method
 
 ### Variable Scope
 
-Variables are global to the block and child blocks.
+Variables are not global.
 
 ```coffeescript
 n = 1
@@ -184,10 +184,23 @@ every minutes:3
   log n
 ```
 
-```java
+```
 +0  INFO 2
 +3m INFO 3
 +6m INFO 4
+```
+
+Functions do not have access to local variables. All variables must be provided as arguments.
+
+```coffeescript
+n = 1
+
+function incr ->
+  n increment
+```
+
+```
+Syntax error. Variable "n" is not defined at line 4.
 ```
 
 ### Compiling
