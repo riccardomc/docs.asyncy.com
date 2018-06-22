@@ -15,7 +15,7 @@ The steps below are for users that have requested access to Asyncy Alpha.
 
 In order to start Asyncy Alpha you will need the following services installed.
 
-1. :whale: [Docker and Docker-Compose](https://docs.docker.com/install/)
+1. :whale: [Docker >=18.02](https://docs.docker.com/install/) and [Docker-Compose >=1.21](https://docs.docker.com/compose/install/)
 2. :snake: Python >=3
 3. :smile: Happiness
 

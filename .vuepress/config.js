@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Λ S N C Y',
+  title: 'Λ S Y N C Y',
   description: 'Write smarter code.',
   ga: 'UA-111475156-5',
   themeConfig: {
