@@ -11,7 +11,7 @@ Welcome to Asyncy :tada: We are very excited to have share our product in early 
 The steps below are for users that have requested access to Asyncy Alpha.
 :::
 
-## Dependancies
+## Dependencies
 
 In order to start Asyncy Alpha you will need the following services installed.
 
@@ -19,7 +19,7 @@ In order to start Asyncy Alpha you will need the following services installed.
 2. :snake: Python >=3
 3. :smile: Happiness
 
-Now that you have the dependancies installed, let's install Asyncy.
+Now that you have the dependencies installed, let's install Asyncy.
 
 ## Install the CLI
 To get started install the Asyncy CLI ([GitHub](https://github.com/asyncy/cli))
