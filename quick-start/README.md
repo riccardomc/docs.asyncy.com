@@ -22,24 +22,23 @@ In order to start Asyncy Alpha you will need the following services installed.
 Now that you have the dependencies installed, let's install Asyncy.
 
 ## Install the CLI
-To get started install the Asyncy CLI ([GitHub](https://github.com/asyncy/cli))
+To get started install the Asyncy CLI
 
 ```shell
-pip install --user asyncy
+brew install asyncy/brew/asyncy
 ```
+> <small> :computer: **Not using macOS?** Checkout [all the installation options](/cli/#install).</small>
 
 Then create a new folder for your project.
 
 ```shell
-mkdir my-first-story && cd my-first-story
+cd ~/my-story
 ```
 
 Now, login to Asyncy Alpha.
 
 ```shell
 asyncy login
-Email:
-Password:
 ```
 
 The login will then bootstrap the Alpha environment by pulling the stack and running it. See all commands by running `asyncy`.
