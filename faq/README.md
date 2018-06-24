@@ -28,7 +28,7 @@ Use any programming language necessary to build your service just like you would
 The top reasons are identity, knowledge, control, and data flow design.
 For a full description, continue to our blog post below.
 
-> <small>Next: [Meet Storyscript &rarr;](https://medium.com/asyncy)</small>
+> <small>Next: [Meet Storyscript](https://medium.com/asyncy)</small>
 
 ### What is Storyscript used for?
 
@@ -94,11 +94,11 @@ Questions pertaining to the Asyncy Platform.
 
 ### Is Asyncy a serverless environment?
 
-**Yes**, Asyncy is a serverless execution environment. The Asyncy Platform provides an HTTP gateway which executes Storyscript in a serverless fashion. Storyscripts register with the gateway, therefore do not have an active http server.
+**Yes**, Asyncy is a serverless execution environment. The Asyncy Platform provides an HTTP gateway which executes Storyscript in a serverless design.
 
 ### Is Asyncy a Paas, Baas, or Faas?
 
-Asyncy is a **Platform as a Service** (aka PaaS) which has some functionality of Backend as a Service (BaaS) and Functions as a Service (Faas). Asyncy's Engine is our BaaS and custom code can as in a FaaS.
+Asyncy is a **Platform as a Service** (aka PaaS) which has functionality of Backend as a Service (BaaS) and Functions as a Service (FaaS). Hard to put one label on it.
 
 ### Does Asyncy use Kubernetes under-the-hood?
 
@@ -129,7 +129,6 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 **No**, databases are unfortunately not on-size-fits-all. Yet, it's quite simple to create persistent database or user a database backed by the cloud provider.
 
-
 ### Can I bring my own database?
 
 **Yes***. We recommend using the cloud providers database, such as Google Cloud SQL or AWS RDS. But you can run and managing your own database on the Asyncy Platform.
@@ -144,7 +143,7 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 ### Is there a managed Asyncy?
 
-**Yes**, we call this the **Asyncy Cloud**. Sign-up at [https://app.asyncy.com](https://app.asyncy.com)
+**Yes**, we call this the **Asyncy Cloud**. *Coming soon.*
 
 ### What is the pricing for Asyncy Cloud?
 
@@ -156,9 +155,9 @@ We plan to offer **highly transparent** pricing for our Asyncy Cloud offering. D
 
 ### Does Asyncy offer support?
 
-> During Beta we offer [support](/support/) for **free**. :heart:
+> During Alpha/Beta we offer [support](/support/) for **free**. :heart:
 
-Asyncy offers a variety of support options ranging from community support to premium support. More details will arrive after Beta.
+Asyncy offers a variety of support options ranging from community support to premium support. More details will arrive during Beta.
 
 ### Does Asyncy have a Service Level Agreement (SLA)?
 
@@ -168,8 +167,9 @@ We offer SLA contracts with our premium support license. More details will arriv
 
 All technology has a level of vendor lock-in, it's unavoidable. Asyncy is focused at building an open platform to reduce vendor lock-in concerns as much as possible. Our core mission depends on our ability to reduce vendor lock-in.
 
-1. **Open Source** -- Asyncy is 100% open sourced under various licenses that provide transparency and portability to on-premise commercial applications.
-2. **Open Standards** -- The microservices used by Asyncy are designed in a platform-agnostic way using the principles and guidelines outlined in the [Open Microservice Guide](https://microservice.guide).
-3. **Platform-Agnostic Language** -- Storyscript is MIT licensed and designed to be highly portable and platform-agnostic. A vendor could use the output of Storyscript to build their own platform.
+1. **Open Source** &mdash; Asyncy is 100% open sourced under various licenses that provide transparency and portability to on-premise commercial applications.
+1. **Open Language** &mdash; Storyscript is MIT licensed and designed to be highly portable and platform-agnostic. A vendor could use the output of Storyscript to build their own platform.
+1. **Open Services** &mdash; Thanks to the Open Microservice Guide all microservices are, by design, not unique to Asyncy.
+2. **Open Standards** &mdash; The microservices used by Asyncy are designed in a platform-agnostic way using the principles and guidelines outlined in the [Open Microservice Guide](https://microservice.guide).
 
 Please contact [legal@asyncy.com](mailto:legal@asyncy.com) for questions and concerns.

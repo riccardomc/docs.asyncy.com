@@ -68,8 +68,6 @@ pip install asyncy
 </tr>
 </table>
 
-
-
 ## Getting Started
 
 Then login to your Asyncy account.
@@ -87,10 +85,10 @@ Now you are authenticated to use the Asyncy Platform
 ## Updating
 
 ```shell
-pip install --user -U asyncy
+asyncy update
 ```
 
-:tada: Holla at me upgrade!
+Updates the Asyncy Stack with new components.
 
 ## Usage
 ```shell
@@ -101,28 +99,15 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  deploy    Deploy your Story project git push asyncy...
-  login     Login to Asyncy
-  logs      Show compose logs
-  ls        List services and user interfaces
-  shutdown  Show stack status and health
-  start     Start the Asyncy Stack
-  status    Show stack status and health
-  test      Test the Stories
-  update    Pull new updates to the Asyncy Stack
+  ... many commands here ...
 ```
 
 Get more details on each command by applying `--help` to the command.
 
+## Troubleshooting
+
 ```shell
-asyncy deploy --help
-Usage: asyncy deploy [OPTIONS]
-
-  Deploy your Story project
-
-      git push asyncy master
-
-Options:
-  -f, --force  Forse push
-  --help       Show this message and exit.
+asyncy support
 ```
+
+This command will upload a support bundle to our team to help fix any issues.

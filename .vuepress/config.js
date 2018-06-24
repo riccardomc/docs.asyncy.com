@@ -24,23 +24,9 @@ module.exports = {
     ],
     sidebar: [
       '/quick-start/',
-      {
-        title: 'Applications',
-        collapsable: false,
-        children: [
-          '/storyscript/',
-          '/services/',
-        ]
-      },
-      {
-        title: 'Developer Tools',
-        collapsable: false,
-        children: [
-          '/cli/',
-          // '/plugins/',
-          // '/testing/'
-        ]
-      },
+      '/storyscript/',
+      '/services/',
+      '/cli/',
       // {
       //   title: 'API',
       //   collapsable: false,

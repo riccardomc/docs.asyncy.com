@@ -7,7 +7,7 @@ Built-in **service discovery** provides a powerful environment for finding servi
 # Table of Contents
 [[toc]]
 
-## Why Storyscript
+## About Storyscript
 
 Storyscript (or Stories for short) focuses on the **application logic** rather than all the *tape and glue* that bind applications together. The underlining services have a standard for **logs, metrics, fail-over, rate-limiting, tracebacks and scaling** which eliminates the need to write it within the application. This cultivates a development environment primed for rapid application development in a production-ready platform.
 
@@ -16,6 +16,12 @@ Let's build a quick application for example. Our goals are to upload, analyse, c
 ```coffeescript
 # Registers with Asyncy Server as an endpoint
 http-endpoint method:'post' path:'/upload' as request, response
+    response write 'Success! Processing asynchronously.'
+    response set_status 201
+    response finish
+
+    # At this we are running asynchronously
+
     # generate a unique id for this upload
     id = uuid uuid4
 
@@ -23,12 +29,6 @@ http-endpoint method:'post' path:'/upload' as request, response
 
     # using https://machinebox.io find the video topics
     topics = machinebox/videobox content:video
-
-    if 'nudity' in topics
-        response finish code:400 message:'Sorry, nudity found in image.'
-        end story
-
-    response finish code:201 message:'Success! Processing asynchronously.'
 
     # save record in mongodb
     mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
@@ -42,7 +42,7 @@ http-endpoint method:'post' path:'/upload' as request, response
 
 In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
 
-> Blog: [Why Asyncy built a DSL called Storyscript](/)
+<!-- > Blog: [Why Asyncy built a DSL called Storyscript](/) -->
 
 
 ## Syntax Overview
@@ -104,17 +104,17 @@ else
 
 # Loops
 foreach myList as item
-    # ...
+    # more stuff here
 
 while foobar
-    # ...
+    # more stuff here
 
 # Services
 output = service cmd key:value
 
 # Functions
 function walk distance:number -> someOutput:string
-    # ...
+    # more stuff here
     return "Ok, walked {{distance}}km!"
 
 walk distance:10
@@ -131,9 +131,9 @@ res = MyFunction key:value
 
 # try and catch
 try
-  # ...
+  # more stuff here
 catch as error
-  # ...
+  # more stuff here
   retry  # try the block again
   # -or-
   raise  # bubble it up
@@ -488,14 +488,14 @@ obj
 
 ```coffeescript
 if foo == bar
-  # ...
+  # more stuff here
 else if foo > bar
-  # ...
+  # more stuff here
 else
-  # ...
+  # more stuff here
 
 if (foo > 0 or cat is not dog) or foobar like /regexp/
-  # ...
+  # more stuff here
 ```
 
 `if`/`else` statements can be written without the use of parentheses and curly brackets. As with functions and other block expressions, multi-line conditionals are delimited by indentation.
@@ -504,19 +504,19 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 
 ```coffeescript
 foreach myList as item
-    # ...
+    # more stuff here
 
 foreach myList as index, item
-    # ...
+    # more stuff here
 
 foreach myObject as key
-    # ...
+    # more stuff here
 
 foreach myObject as key, value
-    # ...
+    # more stuff here
 
 while (foobar is true)
-    # ...
+    # more stuff here
 ```
 
 Accessing list index or object keys is handled automatically.
@@ -532,12 +532,12 @@ Data can be collected during loops and passed to an output list.
 
 ```coffeescript
 foreach myList as item
-    # ...
+    # more stuff here
     if do_end_loop
         end
     if do_skip_to_next_item
         continue
-    # ...
+    # more stuff here
 ```
 
 Loops have reserved keywords for ending and continuing loops.
@@ -608,7 +608,7 @@ twitter stream hashtag:'asyncy' as tweet
 ```
 
 Every new tweet will be passed into the block below in the variable `tweet`.
-Then machine learning, provided by [MachineBox](https://hub.asyncy.com/s/machinebox), will determine if the tone of the tweet's message is good or bad. The streaming service will wait for new tweets until the story is ended.
+Then machine learning will determine if the tone of the tweet's message is good or bad. The streaming service will wait for new tweets until the story is ended.
 
 
 ## Importing
@@ -662,11 +662,11 @@ Pausing a Story will close any open thread (http connections, streaming services
 
 ```coffeescript
 try
-  # ...
+  # more stuff here
 catch as error
-  # ...
+  # more stuff here
 finally
-  # ...
+  # more stuff here
 ```
 
 In Storyscript, the `try` expressions catch exceptions and pass the error to the `catch` block.
@@ -677,9 +677,9 @@ You may omit both the `catch` and `finally`.
 
 ```coffeescript
 try
-  # ...
+  # more stuff here
 catch as error
-  # ...
+  # more stuff here
   raise
 ```
 
@@ -838,7 +838,7 @@ Asynchronous commands provide a way to scale out processes and apply multithread
 
 ```coffeescript
 res = async some_long_process cmd
-# ...
+# more stuff here
 log res.data  # will wait until res is complete until data is resolved
 
 # run through all users at the same time, spawning users(N) processes
