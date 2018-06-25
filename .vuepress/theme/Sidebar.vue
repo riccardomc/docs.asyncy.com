@@ -61,9 +61,9 @@ export default {
     handleScroll (evt, el) {
       if (window.scrollY >= (window.document.body.clientHeight - window.innerHeight - 328)) {
         this.shortenSidebar = true;
-      } else { this.shortenSidebar = false; }
-      console.log(`window: ${window.scrollY}, clientHeight: ${window.document.body.clientHeight}, innerHeight: ${window.innerHeight}`);
-
+      } else {
+        this.shortenSidebar = false;
+      }
     },
   }
 }
