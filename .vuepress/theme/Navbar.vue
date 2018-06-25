@@ -1,7 +1,7 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <router-link :to="$localePath" class="home-link">
+    <router-link to="/" class="home-link">
       <img class="logo" :src="logo">
     </router-link>
     <div class="links">
@@ -42,7 +42,7 @@ export default {
 @import './styles/config.styl'
 
 .navbar
-  padding 1.3rem 1.5rem
+  padding 1.3rem 30px
   line-height $navbarHeight - 2.6rem
   position relative
   a, span, img

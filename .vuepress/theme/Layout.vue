@@ -1,29 +1,36 @@
 <template>
-  <div class="theme-container"
-    :class="pageClasses"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd">
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
-    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-      <slot name="sidebar-top" slot="top"/>
-      <slot name="sidebar-bottom" slot="bottom"/>
-    </Sidebar>
-    <div class="custom-layout" v-if="$page.frontmatter.layout">
-      <component :is="$page.frontmatter.layout"/>
+  <div>
+      <div class="hero" v-if="$page.frontmatter.home">
+        <h1>Documentation</h1>
+      </div>
+    <div class="theme-container"
+      :class="pageClasses"
+      @touchstart="onTouchStart"
+      @touchend="onTouchEnd">
+      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
+      <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
+      <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar" :class="{ 'home-sidebar': $page.frontmatter.home }">
+        <slot name="sidebar-top" slot="top"/>
+        <slot name="sidebar-bottom" slot="bottom"/>
+      </Sidebar>
+      <div class="custom-layout" v-if="$page.frontmatter.layout">
+        <component :is="$page.frontmatter.layout"/>
+      </div>
+      <Page v-else :sidebar-items="sidebarItems" :class="{ home: $page.frontmatter.home }">
+        <slot name="page-top" slot="top"/>
+        <slot name="page-bottom" slot="bottom"/>
+      </Page>
     </div>
-    <Home v-else-if="$page.frontmatter.home"/>
-    <Page v-else :sidebar-items="sidebarItems">
-      <slot name="page-top" slot="top"/>
-      <slot name="page-bottom" slot="bottom"/>
-    </Page>
+    <app-footer class="app-footer" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-import Home from './Home.vue'
+
+import AppFooter from '../../node_modules/asyncy-ui-components/dist/AppFooter'
+
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
@@ -32,7 +39,7 @@ import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  components: { Page, Sidebar, Navbar, AppFooter },
   data () {
     return {
       isSidebarOpen: false
@@ -60,7 +67,6 @@ export default {
       const { frontmatter } = this.$page
       return (
         !frontmatter.layout &&
-        !frontmatter.home &&
         frontmatter.sidebar !== false &&
         this.sidebarItems.length
       )
@@ -211,4 +217,41 @@ function updateMetaTags (meta, current) {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
+<style src="../../node_modules/asyncy-ui-components/dist/AppFooter.css"></style>
+<style lang="styl">
+@import "../../node_modules/bulma-stylus/stylus/utilities/_all";
+@import "../../node_modules/bulma-stylus/stylus/base/helpers"
+@import "../../node_modules/bulma-stylus/stylus/grid/columns";
+</style>
 <style src="./styles/theme.styl" lang="stylus"></style>
+<style scoped lang="styl">
+@import './styles/config.styl'
+
+.hero
+  margin-top $navbarHeight
+  text-align left
+  flex-basis 100%
+  flex-grow 1
+  background #111
+  color white
+  width 100vw
+  padding 40px 30px
+  h1
+    font-size 2.7rem
+    margin 0
+
+.theme-container
+  display flex
+
+  .sidebar.home-sidebar
+    margin-top 0
+
+  .sidebar
+    display inline-block
+
+  .page
+    display inline-block
+
+.app-footer
+  z-index 20
+</style>

@@ -152,7 +152,7 @@ export default {
     padding 0 0.5rem 0 2rem
     outline none
     transition all .2s ease
-    background #fff url(./search.svg) 0.6rem 0.5rem no-repeat
+    background #363636 url(./search.svg) 0.6rem 0.5rem no-repeat
     background-position 0.6rem 49%
     background-size 1rem
     &:focus
