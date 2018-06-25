@@ -242,12 +242,10 @@ function updateMetaTags (meta, current) {
 
 .theme-container
   display flex
+  position relative
 
   .sidebar.home-sidebar
     margin-top 0
-
-  .sidebar
-    display inline-block
 
   .page
     display inline-block
