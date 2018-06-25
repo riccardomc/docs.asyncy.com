@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div class="hero" v-if="$page.frontmatter.home">
-        <h1>Documentation</h1>
-      </div>
+    <div class="hero" v-if="$page.frontmatter.home">
+      <h1>Documentation</h1>
+    </div>
     <div class="theme-container"
       :class="pageClasses"
       @touchstart="onTouchStart"
