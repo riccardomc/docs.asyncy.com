@@ -82,8 +82,8 @@ function resolveOpenGroupIndex (route, items) {
 <style lang="stylus">
 @import './styles/config.styl'
 
-.sidebar.home-sidebar .sidebar-internal.shorten
-  bottom -70px
+.sidebar.home-sidebar .sidebar-internal
+  position relative
 
 .sidebar
   display inline-block
