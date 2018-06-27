@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <slot name="top"/>
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
       <span class="link-container">

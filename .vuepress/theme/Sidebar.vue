@@ -1,5 +1,6 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" v-scroll="handleScroll">
+    <div :class="{ 'sidebar-internal': true, 'shorten': shortenSidebar }">
     <NavLinks/>
     <slot name="top"/>
     <ul class="sidebar-links" v-if="items.length">
@@ -14,6 +15,7 @@
       </li>
     </ul>
     <slot name="bottom"/>
+    </div>
   </div>
 </template>
 
@@ -28,7 +30,8 @@ export default {
   props: ['items'],
   data () {
     return {
-      openGroupIndex: 0
+      openGroupIndex: 0,
+      shortenSidebar: false,
     }
   },
   created () {
@@ -54,7 +57,14 @@ export default {
     },
     isActive (page) {
       return isActive(this.$route, page.path)
-    }
+    },
+    handleScroll (evt, el) {
+      if (window.scrollY >= (window.document.body.clientHeight - window.innerHeight - 328)) {
+        this.shortenSidebar = true;
+      } else {
+        this.shortenSidebar = false;
+      }
+    },
   }
 }
 
@@ -72,7 +82,21 @@ function resolveOpenGroupIndex (route, items) {
 <style lang="stylus">
 @import './styles/config.styl'
 
+.sidebar.home-sidebar .sidebar-internal
+  position relative
+
 .sidebar
+  display inline-block
+  height auto
+  .sidebar-internal.shorten
+    position absolute
+    bottom 10px
+
+  .sidebar-internal
+    position fixed
+    height "calc(100vh - %s)" % $navbarHeight
+    width $sidebarWidth
+    overflow scroll
   ul
     padding 0
     margin 0

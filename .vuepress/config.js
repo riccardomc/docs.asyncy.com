@@ -11,13 +11,13 @@ module.exports = {
     repo: 'asyncy/docs.asyncy.com',
     repoLabel: 'Edit in GitHub',
     editLinks: true,
+    sidebarDepth: 1,
     nav: [
+      { text: 'Platform', link: 'https://asyncy.com/platform' },
       {
         text: 'More',
         items: [
-          { text: 'Platform Overview', link: 'https://asyncy.com/platform' },
           { text: 'Blog', link: 'https://medium.com/asyncy' },
-          { text: 'Asyncy App', link: 'https://app.asyncy.com' },
           { text: 'Asyncy Hub', link: 'https://hub.asyncy.com' }
         ]
       }

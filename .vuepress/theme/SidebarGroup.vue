@@ -8,7 +8,7 @@
     </p>
     <DropdownTransition>
       <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
-        <li v-for="child in item.children">
+        <li v-for="child in item.children" class="sub-link">
           <SidebarLink :item="child"/>
         </li>
       </ul>
@@ -28,6 +28,8 @@ export default {
 </script>
 
 <style lang="stylus">
+@import './styles/config.styl'
+
 .sidebar-group
   &:not(.first)
     margin-top 1em
@@ -39,17 +41,16 @@ export default {
       color inherit
 
 .sidebar-heading
-  color #999
+  color $textColor
   transition color .15s ease
   cursor pointer
-  font-size 1.1em
   font-weight 500
   // text-transform uppercase
   padding-left 1.5rem
   margin-top 0
   margin-bottom 0.5rem
   &.open, &:hover
-    color inherit
+    color $accentColor
   .arrow
     position relative
     top -0.12em
@@ -60,4 +61,11 @@ export default {
 .sidebar-group-items
   transition height .1s ease-out
   overflow hidden
+
+  .sub-link a
+    font-weight normal
+    color #747474
+
+    &:hover
+      color $accentColor
 </style>
