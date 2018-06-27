@@ -15,9 +15,9 @@ The steps below are for users that have requested access to Asyncy Alpha.
 
 In order to start Asyncy Alpha you will need the following services installed.
 
-1. :whale: [Docker >=18.02](https://docs.docker.com/install/) and [Docker-Compose >=1.21](https://docs.docker.com/compose/install/)
-2. :snake: Python >=3
-3. :smile: Happiness
+1. :whale: [Docker >=18.02](https://docs.docker.com/install/)
+1. :whale: [Docker Compose >=1.21](https://docs.docker.com/compose/install/)
+1. :smile: Happiness
 
 Now that you have the dependencies installed, let's install Asyncy.
 
@@ -27,7 +27,10 @@ To get started install the Asyncy CLI
 ```shell
 brew install asyncy/brew/asyncy
 ```
-> <small> :computer: **Not using macOS?** Checkout [all the installation options](/cli/#install).</small>
+
+| [More install options](/cli/#install) | <img src="../assets/apple-logo.svg" width="15"> macOS | <img src="../assets/windows-logo.svg" width="15"> Windows | <img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+ | :snake: Python
+| --- | --- | --- | --- | --- |
+
 
 Then create a new folder for your project.
 
