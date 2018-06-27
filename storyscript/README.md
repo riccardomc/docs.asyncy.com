@@ -157,12 +157,12 @@ First set of parentheses when assigning variables is optional. E.g., `a = myList
 
 ```coffeescript
 myList = []
-myLlist append 1  # mutates myList by appending the new item
+myLlist append item:1  # mutates myList by appending the new item
 (myList == [1])
 # true
 
 myString = 'abc'
-myString replace 'a' with:'Z'  # does not mutate the original string
+myString adjust replace:'a' with:'Z'  # does not mutate the original string
 # Zbc
 myString
 # abc
@@ -297,7 +297,7 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 "abc" length
 # 3
 
-"abc" replace 'b' with:'Z'
+"abc" adjust replace:'b' with:'Z'
 # aZc
 
 "foo bar" capitalize
@@ -306,7 +306,7 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 "foo bar" capitalize words:1
 # Foo bar
 
-"a,b,c" split ','
+"a,b,c" split by:','
 # ['a', 'b', 'c']
 
 "abc" uppercase
@@ -389,10 +389,10 @@ list_multiline = [
 ['a', 'b', 'c'] length
 # 3
 
-['a', 'b', 'c'] join ':'
+['a', 'b', 'c'] join by:':'
 # a:b:c
 
-['a', 'b', 'c'] index 'b'
+['a', 'b', 'c'] index of:'b'
 # 1
 
 ['a', 'b', 'c'] random
@@ -403,14 +403,14 @@ list_multiline = [
 ['a', 'b', 'c'] reverse
 # ['c', 'b', 'a']
 
-['a', 'b', 'c'] shift 'left'
+['a', 'b', 'c'] shift from:'left'
 # a
 # the list becomes ['b', 'c']
 
-['1', '2', '3'] apply int
+['1', '2', '3'] apply method:int
 # [1, 2, 3]
 
-['a', 'c', 'b'] sort
+['a', 'c', 'b'] sort dir:'asc'
 # ['a', 'b', 'c']
 
 myList = [1, 2, 3]
@@ -436,7 +436,7 @@ range = Range from:(date now) to:tomorrow
 [bday year, bday month, bday day, bday hour, bday minute, bday second]
 # [2018, 1, 2, 17, 32, 18]
 
-bday format 'YYYY-mm-dd'
+bday format to:'YYYY-mm-dd'
 # 2018-01-02
 ```
 
@@ -477,7 +477,7 @@ object_multiline = {
 # Mutating Methods
 
 obj = {'a': 1, 'b': 2}
-obj pop 'a'
+obj pop key:'a'
 # 1
 obj
 # {'b': 2}
@@ -718,7 +718,7 @@ Regular expressions are supported without any special characters of escaping nec
 pattern = /(?P<key>\w):(?P<value>\w)/
 myString = 'foo:bar'
 
-pattern matches myString
+pattern matches str:myString
 # true
 
 pattern find in:myString
@@ -832,7 +832,7 @@ Asynchronous commands provide a way to scale out processes and apply multithread
 ```coffeescript
 res = async some_long_process cmd
 # more stuff here
-log res.data  # will wait until res is complete until data is resolved
+log data:res.data  # will wait until res is complete until data is resolved
 
 # run through all users at the same time, spawning users(N) processes
 async foreach users as user
