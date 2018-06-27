@@ -13,7 +13,7 @@ To get started install the Asyncy CLI ([Contribute](https://github.com/asyncy/cl
 <table width="100%">
 <tr>
 <td style="text-align:center" width="50%" valign="top">
-<h1><img src="./apple-logo.svg" width="40"> macOS</h1>
+<h1><img src="../assets/apple-logo.svg" width="40"> macOS</h1>
 
 <a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button">Download the installer</a>
 
@@ -25,7 +25,7 @@ brew install asyncy/brew/asyncy
 
 </td>
 <td style="text-align:center" width="50%" valign="top">
-<h1><img src="./windows-logo.svg" width="40"> Windows</h1>
+<h1><img src="../assets/windows-logo.svg" width="40"> Windows</h1>
 
 Download the appropriate installer:
 
@@ -40,7 +40,7 @@ Download the appropriate installer:
 <table width="100%">
 <tr>
 <td style="text-align:center" valign="top">
-<h1><img src="./ubuntu-logo.svg" width="40"> Ubuntu 16+</h1>
+<h1><img src="../assets/ubuntu-logo.svg" width="40"> Ubuntu 16+</h1>
 
 ```shell
 sudo snap install asyncy --classic
