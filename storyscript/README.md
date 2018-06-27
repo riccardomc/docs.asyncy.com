@@ -82,10 +82,10 @@ pattern = /^foobar/
 ('foobar' like pattern)
 # true
 
-# Files
-myFile = file '/folder/hello.txt'
-myFile read
-# Hello world
+# Files (provided by the service File)
+file write path:'/folder/hello.txt' content:'hello world'
+file read path:'/folder/hello.txt'
+# hello world
 
 # Date
 birthday = date year:2018 month:1 day:1
@@ -713,48 +713,9 @@ pattern find in:myString
 # [{'name': 'foo'}, {'name': 'bar'}]
 ```
 
-## Files
-
-Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
-
-```coffeescript
-myFile = (file '/folder/hello.txt')
-myFile write 'Hello World'
-myFile read
-# Hello World
-```
-
-Repository clone contents are located in the `/app/` directory, which is read-only. For example, `/app/readme.md` will resolve to the Applications `./readme.md` file.
-
-## File Methods
-
-```coffeescript
-myFile write 'Hello '
-myFile write 'world'
-
-myFile read
-# Hello world
-
-myFile size
-# 5287
-
-myFile size pretty:true
-# 5mb
-
-myFile empty  # empty contents
-
-myFile delete  # destroy file
-
-myFile iter  # yield a list of lines
-```
-
 ## Wait and Cron
 
-::: warning Coming Soon!
-This behavior is not yet developed. Feedback welcome!
-:::
-
-Asyncy has built-in delays that can be applied seamlessly in Storyscript.
+The [`wait`](https://hub.asyncy.com/service/wait), [`every`](https://hub.asyncy.com/service/every) and [`cron`](https://hub.asyncy.com/service/wait) are services in the Asyncy Hub.
 
 ```coffeescript
 wait days:5 hours:2
@@ -766,11 +727,21 @@ wait date:((date now) + (interval day:1))
 every hour:9
     # daily at 9am do this...
 
-cron '* * * * 9'
+cron tab:'* * * * 9'
     # daily at 9am do this...
 ```
 
-The wait and cron are a special service that use Asyncy internal scheduler.
+## Files
+
+Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
+
+[`file`](https://hub.asyncy.com/service/file) is a service in the Asyncy Hub.
+
+```coffeescript
+file write path:'/folder/hello.txt' content:'hello world'
+file read path:'/folder/hello.txt'
+# hello world
+```
 
 ## Types
 
